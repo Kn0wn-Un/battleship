@@ -4,7 +4,7 @@ const ship1 = ship(2, { x: 1, y: 1 }, true);
 
 test('Ship 1 test', () => {
 	let det = ship1.getDetails();
-	expect(det.length).toBe(2);
+	expect(det.shipLen).toBe(2);
 	expect(det.startCoord).toEqual({ x: 1, y: 1 });
 	expect(det.isHorizontal).toBeTruthy();
 	expect(det.pos).toEqual([
@@ -19,7 +19,7 @@ test('Ship 1 test', () => {
 test('Ship 2 test', () => {
 	const ship2 = ship(4, { x: 0, y: 3 }, false);
 	let det = ship2.getDetails();
-	expect(det.length).toBe(4);
+	expect(det.shipLen).toBe(4);
 	expect(det.startCoord).toEqual({ x: 0, y: 3 });
 	expect(det.isHorizontal).toBeFalsy();
 	expect(det.pos).toEqual([
