@@ -41,3 +41,4 @@ const ship = (length, startCoord, isHorizontal) => {
 };
 
 module.exports = ship;
+export default ship;
