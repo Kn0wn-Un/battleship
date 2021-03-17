@@ -40,6 +40,7 @@ test('Gameboard 1 test', () => {
 	expect(gb1.receiveAttack({ x: 1, y: 0 })).toBe('miss');
 	expect(gb1.receiveAttack({ x: 2, y: 1 })).toBe('miss');
 	expect(gb1.receiveAttack({ x: 2, y: 0 })).toBe('miss');
+	expect(gb1.receiveAttack({ x: 2, y: 0 })).toBe('duplicate shot');
 	expect(gb1.getMissShots()).toEqual([
 		[0, 0],
 		[0, 1],
@@ -63,4 +64,9 @@ test('Gameboard 1 test', () => {
 	expect(gb1.receiveAttack({ x: 4, y: 4 })).toBe('miss');
 	expect(gb1.receiveAttack({ x: 0, y: 3 })).toBe('all ships sunk');
 	expect(gb1.checkAllSunk()).toBe('all ships sunk');
+});
+
+test('Gameboard 2 test', () => {
+	let gb2 = gameboard();
+	//todo
 });
