@@ -43,6 +43,7 @@ const gameboard = () => {
 		return shotsMiss.sort();
 	};
 	const receiveAttack = (coords) => {
+		if (isDupShot(coords)) return 'duplicate shot';
 		for (let i = 0; i < allShipsPos.length; i++)
 			if (
 				coords.x === allShipsPos[i][0] &&
@@ -60,6 +61,15 @@ const gameboard = () => {
 			}
 		shotsMiss.push([coords.x, coords.y]);
 		return 'miss';
+	};
+	const isDupShot = (coords) => {
+		for (let i = 0; i < shotsMiss.length; i++)
+			if (coords.x === shotsMiss[i][0] && coords.y === shotsMiss[i][1])
+				return true;
+		for (let i = 0; i < shotsHit.length; i++)
+			if (coords.x === shotsHit[i][0] && coords.y === shotsHit[i][1])
+				return true;
+		return false;
 	};
 	const findHitShip = (coords) => {
 		for (let i in ships) {

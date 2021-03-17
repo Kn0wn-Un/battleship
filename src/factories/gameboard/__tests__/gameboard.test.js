@@ -28,6 +28,7 @@ test('Gameboard 1 test', () => {
 	expect(gb1.receiveAttack({ x: 0, y: 0 })).toBe('miss');
 	expect(gb1.receiveAttack({ x: 1, y: 2 })).toBe('ship hit cruiser');
 	expect(gb1.receiveAttack({ x: 1, y: 1 })).toBe('ship sunk cruiser');
+	expect(gb1.receiveAttack({ x: 1, y: 1 })).toBe('duplicate shot');
 	expect(gb1.getHitShots()).toEqual([
 		[1, 1],
 		[1, 2],
