@@ -22,9 +22,9 @@ const ship = (shipLen, startCoord, isHorizontal) => {
 				hitPos.push([coord.x, coord.y]);
 				hitCtr++;
 				if (hitCtr === shipLen) return isSunk();
-				return 'hit';
+				return 'ship hit';
 			}
-		return 'miss';
+		return 'ship miss';
 	};
 	const isSunk = () => {
 		const pos = findAllPos();
@@ -33,7 +33,7 @@ const ship = (shipLen, startCoord, isHorizontal) => {
 			for (let i = 0; i < shipLen; i++)
 				if (hitPos[i][0] !== pos[i][0] && hitPos[i][1] !== pos[i][0])
 					return 'err';
-			return 'sunk';
+			return 'ship sunk';
 		}
 		return 'err';
 	};

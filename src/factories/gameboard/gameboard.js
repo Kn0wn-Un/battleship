@@ -1,27 +1,95 @@
 const ship = require('../ship/ship');
 
 const gameboard = () => {
-	const allShips = [];
-	const setShip = (det) => {
-		for (let i = 0; i < allShips.length; i++)
-			if (allShips[i][0] === det[1].x && allShips[i][1] === det[1].y)
-				return 'err';
-		const ship1 = ship(...det);
-		let pos = ship1.getDetails().pos;
+	const allShipsPos = [];
+	const shotsMiss = [];
+	const shotsHit = [];
+	const ships = {};
+	let sunkCtr = 0;
+	const setShip = (det, type) => {
+		if (canPlaceShip(det)) {
+			ships[type] = ship(...det);
+			let pos = ships[type].getDetails().pos;
+			allShipsPos.push(...pos);
+			return pos;
+		}
+		return 'err';
+	};
+	const canPlaceShip = (det) => {
+		for (let i = 0; i < allShipsPos.length; i++)
+			if (
+				allShipsPos[i][0] === det[1].x &&
+				allShipsPos[i][1] === det[1].y
+			)
+				return false;
+		let testShip = ship(...det);
+		let pos = testShip.getDetails().pos;
 		for (let j = 0; j < pos.length; j++)
-			for (let i = 0; i < allShips.length; i++)
+			for (let i = 0; i < allShipsPos.length; i++)
 				if (
-					allShips[i][0] === pos[j][0] &&
-					allShips[i][1] === pos[j][1]
+					allShipsPos[i][0] === pos[j][0] &&
+					allShipsPos[i][1] === pos[j][1]
 				)
-					return 'err';
-		allShips.push(...pos);
-		return pos;
+					return false;
+		return true;
 	};
-	const getAllShips = () => {
-		return allShips;
+	const getallShips = () => {
+		return allShipsPos.sort();
 	};
-	return { setShip, getAllShips };
+	const getHitShots = () => {
+		return shotsHit.sort();
+	};
+	const getMissShots = () => {
+		return shotsMiss.sort();
+	};
+	const receiveAttack = (coords) => {
+		for (let i = 0; i < allShipsPos.length; i++)
+			if (
+				coords.x === allShipsPos[i][0] &&
+				coords.y === allShipsPos[i][1]
+			) {
+				shotsHit.push([coords.x, coords.y]);
+				const sh = findHitShip(coords);
+				const hit = ships[sh].hit(coords);
+				if (hit === 'ship sunk') {
+					sunkCtr++;
+					if (sunkCtr === Object.keys(ships).length)
+						return checkAllSunk();
+					return `${hit} ${sh}`;
+				} else return `${hit} ${sh}`;
+			}
+		shotsMiss.push([coords.x, coords.y]);
+		return 'miss';
+	};
+	const findHitShip = (coords) => {
+		for (let i in ships) {
+			let pos = ships[i].findAllPos();
+			for (let j = 0; j < pos.length; j++)
+				if (pos[j][0] === coords.x && pos[j][1] === coords.y) return i;
+		}
+		return 'err';
+	};
+	const checkAllSunk = () => {
+		shotsHit.sort();
+		allShipsPos.sort();
+		if (shotsHit.length !== allShipsPos.length) return 'no';
+		for (let i = 0; i < allShipsPos.length; i++)
+			if (
+				shotsHit[i][0] !== allShipsPos[i][0] ||
+				shotsHit[i][1] !== allShipsPos[i][1]
+			)
+				return 'no';
+		return 'all ships sunk';
+	};
+	return {
+		setShip,
+		getallShips,
+		receiveAttack,
+		checkAllSunk,
+		canPlaceShip,
+		getHitShots,
+		getMissShots,
+	};
 };
 
 module.exports = gameboard;

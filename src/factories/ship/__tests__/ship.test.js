@@ -11,9 +11,9 @@ test('Ship 1 test', () => {
 		[1, 1],
 		[1, 2],
 	]);
-	expect(ship1.hit({ x: 1, y: 2 })).toBe('hit');
-	expect(ship1.hit({ x: 1, y: 1 })).toBe('sunk');
-	expect(ship1.hit({ x: 0, y: 0 })).toBe('miss');
+	expect(ship1.hit({ x: 1, y: 2 })).toBe('ship hit');
+	expect(ship1.hit({ x: 1, y: 1 })).toBe('ship sunk');
+	expect(ship1.hit({ x: 0, y: 0 })).toBe('ship miss');
 });
 
 test('Ship 2 test', () => {
@@ -28,10 +28,10 @@ test('Ship 2 test', () => {
 		[2, 3],
 		[3, 3],
 	]);
-	expect(ship2.hit({ x: 1, y: 1 })).toBe('miss');
-	expect(ship2.hit({ x: 2, y: 3 })).toBe('hit');
-	expect(ship2.hit({ x: 0, y: 3 })).toBe('hit');
-	expect(ship2.hit({ x: 0, y: 4 })).toBe('miss');
-	expect(ship2.hit({ x: 3, y: 3 })).toBe('hit');
-	expect(ship2.hit({ x: 1, y: 3 })).toBe('sunk');
+	expect(ship2.hit({ x: 1, y: 1 })).toBe('ship miss');
+	expect(ship2.hit({ x: 2, y: 3 })).toBe('ship hit');
+	expect(ship2.hit({ x: 0, y: 3 })).toBe('ship hit');
+	expect(ship2.hit({ x: 0, y: 4 })).toBe('ship miss');
+	expect(ship2.hit({ x: 3, y: 3 })).toBe('ship hit');
+	expect(ship2.hit({ x: 1, y: 3 })).toBe('ship sunk');
 });
