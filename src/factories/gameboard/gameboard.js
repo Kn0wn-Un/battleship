@@ -16,6 +16,7 @@ const gameboard = () => {
 		return 'err';
 	};
 	const canPlaceShip = (det) => {
+		if (det[1].x > 10 || det[1].y > 10) return false;
 		for (let i = 0; i < allShipsPos.length; i++)
 			if (
 				allShipsPos[i][0] === det[1].x &&
@@ -24,13 +25,15 @@ const gameboard = () => {
 				return false;
 		let testShip = ship(...det);
 		let pos = testShip.getDetails().pos;
-		for (let j = 0; j < pos.length; j++)
+		for (let j = 0; j < pos.length; j++) {
 			for (let i = 0; i < allShipsPos.length; i++)
 				if (
 					allShipsPos[i][0] === pos[j][0] &&
 					allShipsPos[i][1] === pos[j][1]
 				)
 					return false;
+			if (pos[j][0] > 10 || pos[j][1] > 10) return false;
+		}
 		return true;
 	};
 	const getallShips = () => {
@@ -44,6 +47,7 @@ const gameboard = () => {
 	};
 	const receiveAttack = (coords) => {
 		if (isDupShot(coords)) return 'duplicate shot';
+		if (coords.x > 10 || coords.y > 10) return 'err';
 		for (let i = 0; i < allShipsPos.length; i++)
 			if (
 				coords.x === allShipsPos[i][0] &&
