@@ -16,7 +16,7 @@ const gameboard = () => {
 		return 'err';
 	};
 	const canPlaceShip = (det) => {
-		if (det[1].x > 10 || det[1].y > 10) return false;
+		if (det[1].x > 9 || det[1].y > 9) return false;
 		for (let i = 0; i < allShipsPos.length; i++)
 			if (
 				allShipsPos[i][0] === det[1].x &&
@@ -32,7 +32,7 @@ const gameboard = () => {
 					allShipsPos[i][1] === pos[j][1]
 				)
 					return false;
-			if (pos[j][0] > 10 || pos[j][1] > 10) return false;
+			if (pos[j][0] > 9 || pos[j][1] > 9) return false;
 		}
 		return true;
 	};
@@ -47,7 +47,7 @@ const gameboard = () => {
 	};
 	const receiveAttack = (coords) => {
 		if (isDupShot(coords)) return 'duplicate shot';
-		if (coords.x > 10 || coords.y > 10) return 'err';
+		if (coords.x > 9 || coords.y > 9) return 'err';
 		for (let i = 0; i < allShipsPos.length; i++)
 			if (
 				coords.x === allShipsPos[i][0] &&

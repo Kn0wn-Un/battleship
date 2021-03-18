@@ -95,7 +95,7 @@ test('Player test 2', () => {
 	expect(plyr2.play({ x: 0, y: 2 })).toBe('miss');
 	expect(plyr1.play({ x: 5, y: 8 })).toBe('miss');
 	expect(plyr2.play({ x: 1, y: 9 })).toBe('miss');
-	expect(plyr1.play({ x: 10, y: 10 })).toBe('miss');
+	expect(plyr1.play({ x: 10, y: 10 })).toBe('err');
 	expect(plyr2.play({ x: 2, y: 3 })).toBe('ship hit destroyer');
 	expect(plyr1.play({ x: 0, y: 4 })).toBe('miss');
 	expect(plyr2.play({ x: 3, y: 3 })).toBe('ship hit destroyer');
@@ -120,7 +120,6 @@ test('Player test 2', () => {
 		misses: [
 			[0, 0],
 			[0, 4],
-			[10, 10],
 			[5, 8],
 		],
 	});

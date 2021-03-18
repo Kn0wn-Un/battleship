@@ -28,7 +28,7 @@ test('Gameboard 1 test', () => {
 	expect(gb1.receiveAttack({ x: 0, y: 0 })).toBe('miss');
 	expect(gb1.receiveAttack({ x: 1231, y: 10 })).toBe('err');
 	expect(gb1.receiveAttack({ x: 0, y: 20 })).toBe('err');
-	expect(gb1.receiveAttack({ x: 10, y: 10 })).toBe('miss');
+	expect(gb1.receiveAttack({ x: 10, y: 10 })).toBe('err');
 	expect(gb1.receiveAttack({ x: 1, y: 2 })).toBe('ship hit cruiser');
 	expect(gb1.receiveAttack({ x: 1, y: 1 })).toBe('ship sunk cruiser');
 	expect(gb1.receiveAttack({ x: 1, y: 1 })).toBe('duplicate shot');
@@ -36,10 +36,7 @@ test('Gameboard 1 test', () => {
 		[1, 1],
 		[1, 2],
 	]);
-	expect(gb1.getMissShots()).toEqual([
-		[0, 0],
-		[10, 10],
-	]);
+	expect(gb1.getMissShots()).toEqual([[0, 0]]);
 	expect(gb1.checkAllSunk()).toBe('no');
 	expect(gb1.receiveAttack({ x: 2, y: 3 })).toBe('ship hit destroyer');
 	expect(gb1.receiveAttack({ x: 0, y: 1 })).toBe('miss');
@@ -51,7 +48,6 @@ test('Gameboard 1 test', () => {
 		[0, 0],
 		[0, 1],
 		[1, 0],
-		[10, 10],
 		[2, 0],
 		[2, 1],
 	]);
