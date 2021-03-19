@@ -17,4 +17,5 @@ const player = (name, pGb, opGb) => {
 	return { getDetails, play };
 };
 
-module.exports = player;
+//module.exports = player;
+export default player;

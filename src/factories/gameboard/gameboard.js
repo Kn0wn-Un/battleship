@@ -106,4 +106,5 @@ const gameboard = () => {
 	};
 };
 
-module.exports = gameboard;
+//module.exports = gameboard;
+export default gameboard;
