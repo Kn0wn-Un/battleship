@@ -12,3 +12,4 @@ const ai = (comp) => {
 };
 
 module.exports = ai;
+export default ai;
