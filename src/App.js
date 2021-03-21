@@ -19,15 +19,20 @@ function App() {
 	let won;
 	while (true) {
 		const res = i % 2 === 0 ? comp1.play() : comp2.play();
-		setTimeout(() => {
-			console.log(res);
-		}, 500);
-		if (res === 'Computer 1 won!' || res === 'Computer 2 won!') {
+		console.log(res);
+		if (/won!/.test(res)) {
 			won = res;
+			console.log(
+				i % 2 === 0
+					? `Computer 1 ${cGb.checkAllSunk()}`
+					: `Computer 2 ${pGb.checkAllSunk()}`
+			);
 			break;
 		}
 		i++;
 	}
+	console.log(compPlayer1.getDetails());
+	console.log(compPlayer2.getDetails());
 	const arr = [];
 	for (let i = 0; i < 10; i++) {
 		let inArr = [];
@@ -49,8 +54,8 @@ function App() {
 		let hits = opp.hits;
 		for (let i = 0; i < hits.length; i++)
 			if (coords[0] === hits[i][0] && coords[1] === hits[i][1]) {
-				console.log(coords);
-				console.log(hits[i]);
+				//console.log(coords);
+				//console.log(hits[i]);
 				classVal = 'hit';
 			}
 		hits = player.hits;

@@ -11,7 +11,7 @@ const player = (name, pGb, opGb) => {
 		const res = opGb.receiveAttack(coords);
 		if (res === 'all ships sunk')
 			if (opGb.checkAllSunk() === 'all ships sunk') return `${name} won!`;
-		return res;
+		return `${res} ${name}`;
 	};
 
 	return { getDetails, play };
