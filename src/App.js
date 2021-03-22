@@ -3,41 +3,64 @@ import ai from './factories/ai/ai';
 import player from './factories/player/player';
 import gameboard from './factories/gameboard/gameboard';
 //import ship from './factories/ship/ship';
-
+import React, { useEffect, useState } from 'react';
 function App() {
-	let pGb = gameboard();
-	pGb.setShip([2, { x: 1, y: 1 }, true], 'cruiser');
-	pGb.setShip([4, { x: 0, y: 3 }, false], 'destroyer');
-	let cGb = gameboard();
-	cGb.setShip([2, { x: 0, y: 5 }, false], 'cruiser');
-	cGb.setShip([4, { x: 0, y: 6 }, true], 'destroyer');
-	let compPlayer1 = player('Computer 1', pGb, cGb);
+	const [won, setWon] = useState('');
+	let c1 = gameboard();
+	c1.setShip([2, { x: 1, y: 1 }, true], 'cruiser');
+	c1.setShip([4, { x: 0, y: 3 }, false], 'destroyer');
+	let c2 = gameboard();
+	c2.setShip([2, { x: 0, y: 5 }, false], 'cruiser');
+	c2.setShip([4, { x: 0, y: 6 }, true], 'destroyer');
+	let compPlayer1 = player('Computer 1', c1, c2);
 	const comp1 = ai(compPlayer1);
-	let compPlayer2 = player('Computer 2', cGb, pGb);
+	let compPlayer2 = player('Computer 2', c2, c1);
 	const comp2 = ai(compPlayer2);
-	let i = 0;
-	let won;
-	while (true) {
-		const res = i % 2 === 0 ? comp1.play() : comp2.play();
-		console.log(res);
-		if (/won!/.test(res)) {
-			won = res;
-			console.log(
-				i % 2 === 0
-					? `Computer 1 ${cGb.checkAllSunk()}`
-					: `Computer 2 ${pGb.checkAllSunk()}`
-			);
-			break;
+	function mainLoop() {
+		while (true) {
+			let res = comp1.play();
+			if (/won!/.test(res)) {
+				setWon(res);
+				console.log(won);
+				console.log(`Computer 1 ${c2.checkAllSunk()}`);
+				return;
+			}
+			res = comp2.play();
+			if (/won!/.test(res)) {
+				setWon(res);
+				console.log(won);
+				console.log(`Computer 2 ${c1.checkAllSunk()}`);
+				return;
+			}
 		}
-		i++;
 	}
-	console.log(compPlayer1.getDetails());
-	console.log(compPlayer2.getDetails());
 	const arr = [];
 	for (let i = 0; i < 10; i++) {
 		let inArr = [];
 		for (let j = 0; j < 10; j++) inArr.push([i, j]);
 		arr.push(inArr);
+	}
+	useEffect(() => {
+		mainLoop();
+		updateGameBoard();
+	}, []);
+	function updateGameBoard() {
+		console.log(compPlayer1.getDetails());
+		console.log(compPlayer2.getDetails());
+		let shipsHit = compPlayer1.getDetails().hits;
+		for (let i = 0; i < shipsHit.length; i++) {
+			let ele = document.getElementById(
+				`${shipsHit[i][0]}${shipsHit[i][1]}`
+			);
+			ele.classList.add('hit');
+		}
+		shipsHit = compPlayer2.getDetails().hits;
+		for (let i = 0; i < shipsHit.length; i++) {
+			let ele = document.getElementById(
+				`${shipsHit[i][0]}${shipsHit[i][1]}`
+			);
+			ele.classList.add('hit');
+		}
 	}
 	function setClass(coords) {
 		const player = compPlayer1.getDetails();
@@ -51,16 +74,16 @@ function App() {
 		for (let i = 0; i < ships.length; i++)
 			if (coords[0] === ships[i][0] && coords[1] === ships[i][1])
 				classVal = 'ship';
-		let hits = opp.hits;
-		for (let i = 0; i < hits.length; i++)
-			if (coords[0] === hits[i][0] && coords[1] === hits[i][1]) {
+		let h = opp.hits;
+		for (let i = 0; i < h.length; i++)
+			if (coords[0] === h[i][0] && coords[1] === h[i][1]) {
 				//console.log(coords);
 				//console.log(hits[i]);
 				classVal = 'hit';
 			}
-		hits = player.hits;
-		for (let i = 0; i < hits.length; i++)
-			if (coords[0] === hits[i][0] && coords[1] === hits[i][1]) {
+		h = player.hits;
+		for (let i = 0; i < h.length; i++)
+			if (coords[0] === h[i][0] && coords[1] === h[i][1]) {
 				classVal = 'hit';
 			}
 		//const misses = opp.misses;
@@ -83,6 +106,7 @@ function App() {
 									return (
 										<td
 											key={index}
+											id={`${coords[0]}${coords[1]}`}
 											className={setClass(coords)}
 											onClick={() => {
 												const coord = {
@@ -90,6 +114,7 @@ function App() {
 													y: coords[1],
 												};
 												console.log(coords);
+												console.log(coord);
 											}}
 										>
 											{''}
