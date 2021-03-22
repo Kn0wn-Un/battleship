@@ -17,21 +17,14 @@ function App() {
 	let compPlayer2 = player('Computer 2', c2, c1);
 	const comp2 = ai(compPlayer2);
 	function mainLoop() {
+		let i = 0;
 		while (true) {
-			let res = comp1.play();
+			let res = i % 2 === 0 ? comp1.play() : comp2.play();
 			if (/won!/.test(res)) {
 				setWon(res);
-				console.log(won);
-				console.log(`Computer 1 ${c2.checkAllSunk()}`);
 				return;
 			}
-			res = comp2.play();
-			if (/won!/.test(res)) {
-				setWon(res);
-				console.log(won);
-				console.log(`Computer 2 ${c1.checkAllSunk()}`);
-				return;
-			}
+			i++;
 		}
 	}
 	const arr = [];
@@ -42,61 +35,48 @@ function App() {
 	}
 	useEffect(() => {
 		mainLoop();
-		updateGameBoard();
+		setShips(compPlayer1);
+		setShips(compPlayer2);
+		updateGameBoard(compPlayer1, compPlayer2);
+		updateGameBoard(compPlayer2, compPlayer1);
 	}, []);
-	function updateGameBoard() {
-		console.log(compPlayer1.getDetails());
-		console.log(compPlayer2.getDetails());
-		let shipsHit = compPlayer1.getDetails().hits;
-		for (let i = 0; i < shipsHit.length; i++) {
+	useEffect(() => {
+		console.log(won);
+	}, [won]);
+	function setShips(player) {
+		const ships = player.getDetails().ships;
+		const name = player.getDetails().name;
+		for (let i = 0; i < ships.length; i++) {
 			let ele = document.getElementById(
-				`${shipsHit[i][0]}${shipsHit[i][1]}`
+				`${name} ${ships[i][0]}${ships[i][1]}`
 			);
-			ele.classList.add('hit');
-		}
-		shipsHit = compPlayer2.getDetails().hits;
-		for (let i = 0; i < shipsHit.length; i++) {
-			let ele = document.getElementById(
-				`${shipsHit[i][0]}${shipsHit[i][1]}`
-			);
-			ele.classList.add('hit');
+			ele.classList.add('ship');
 		}
 	}
-	function setClass(coords) {
-		const player = compPlayer1.getDetails();
-		const opp = compPlayer2.getDetails();
-		let ships = player.ships;
-		let classVal;
-		for (let i = 0; i < ships.length; i++)
-			if (coords[0] === ships[i][0] && coords[1] === ships[i][1])
-				classVal = 'ship';
-		ships = opp.ships;
-		for (let i = 0; i < ships.length; i++)
-			if (coords[0] === ships[i][0] && coords[1] === ships[i][1])
-				classVal = 'ship';
-		let h = opp.hits;
-		for (let i = 0; i < h.length; i++)
-			if (coords[0] === h[i][0] && coords[1] === h[i][1]) {
-				//console.log(coords);
-				//console.log(hits[i]);
-				classVal = 'hit';
-			}
-		h = player.hits;
-		for (let i = 0; i < h.length; i++)
-			if (coords[0] === h[i][0] && coords[1] === h[i][1]) {
-				classVal = 'hit';
-			}
-		//const misses = opp.misses;
-		//for (let i = 0; i < misses.length; i++)
-		//	if (coords[0] === misses[i][0] && coords[1] === misses[i][1])
-		//		return 'miss';
-		return classVal;
+	function updateGameBoard(player, opp) {
+		console.log(player.getDetails());
+		const shipsHit = player.getDetails().hits;
+		const name = opp.getDetails().name;
+		for (let i = 0; i < shipsHit.length; i++) {
+			let ele = document.getElementById(
+				`${name} ${shipsHit[i][0]}${shipsHit[i][1]}`
+			);
+			ele.classList.add('hit');
+		}
+		const shipsMiss = player.getDetails().misses;
+		for (let i = 0; i < shipsMiss.length; i++) {
+			let ele = document.getElementById(
+				`${name} ${shipsMiss[i][0]}${shipsMiss[i][1]}`
+			);
+			ele.classList.add('miss');
+		}
 	}
 	return (
 		<div className="App">
 			<h3>{won}</h3>
 			<br />
 			<br />
+			<h3>Computer 1</h3>
 			<table>
 				<tbody>
 					{arr.map((inArr, index) => {
@@ -106,14 +86,42 @@ function App() {
 									return (
 										<td
 											key={index}
-											id={`${coords[0]}${coords[1]}`}
-											className={setClass(coords)}
+											id={`Computer 1 ${coords[0]}${coords[1]}`}
 											onClick={() => {
 												const coord = {
 													x: coords[0],
 													y: coords[1],
 												};
-												console.log(coords);
+												console.log(coord);
+											}}
+										>
+											{''}
+										</td>
+									);
+								})}
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+			<br />
+			<br />
+			<h3>Computer 2</h3>
+			<table>
+				<tbody>
+					{arr.map((inArr, index) => {
+						return (
+							<tr key={index}>
+								{inArr.map((coords, index) => {
+									return (
+										<td
+											key={index}
+											id={`Computer 2 ${coords[0]}${coords[1]}`}
+											onClick={() => {
+												const coord = {
+													x: coords[0],
+													y: coords[1],
+												};
 												console.log(coord);
 											}}
 										>
