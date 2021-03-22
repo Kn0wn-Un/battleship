@@ -47,12 +47,15 @@ table {
 td:hover {
 	background-color: cyan;
 }
-.ship {
+.ship,
+.ship:hover {
 	background-color: darkblue;
 }
-.hit {
+.hit,
+.hit:hover {
 	background-color: green;
 }
-.miss {
+.miss,
+.miss:hover {
 	background-color: red;
 }
