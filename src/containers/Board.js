@@ -18,7 +18,11 @@ function Board(props) {
 													x: coords[0],
 													y: coords[1],
 												};
-												props.handler(coord);
+												props.handler(
+													coord,
+													props.setWon,
+													props.setMove
+												);
 											}}
 										>
 											{''}
