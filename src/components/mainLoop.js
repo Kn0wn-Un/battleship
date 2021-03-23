@@ -1,9 +1,14 @@
-import './App.css';
-
 const mainLoop = () => {
 	//const turn = () => {
 	//
 	//};
+	const winner = (name) => {
+		for (let i = 0; i < 10; i++)
+			for (let j = 0; j < 10; j++) {
+				let ele = document.getElementById(`${name} ${i}${j}`);
+				ele.classList.add('won');
+			}
+	};
 	const displayShip = (player) => {
 		const ships = player.getDetails().ships;
 		const name = player.getDetails().name;
@@ -41,7 +46,7 @@ const mainLoop = () => {
 		}
 		return arr;
 	};
-	return { displayShip, updateGameBoard, mkArr };
+	return { displayShip, updateGameBoard, mkArr, winner };
 };
 
 export default mainLoop;
