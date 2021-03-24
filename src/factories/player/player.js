@@ -13,7 +13,6 @@ const player = (name, pGb, opGb) => {
 			if (opGb.checkAllSunk() === 'all ships sunk') return `${name} won!`;
 		return `${res} ${name}`;
 	};
-
 	return { getDetails, play };
 };
 

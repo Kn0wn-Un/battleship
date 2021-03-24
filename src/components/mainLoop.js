@@ -1,14 +1,14 @@
 import ai from '../factories/ai/ai';
 import player from '../factories/player/player';
 import gameboard from '../factories/gameboard/gameboard';
-const mainLoop = () => {
+const mainLoop = (uName) => {
 	const gb1 = gameboard();
 	gb1.setShip([2, { x: 1, y: 1 }, true], 'cruiser');
 	gb1.setShip([4, { x: 0, y: 3 }, false], 'destroyer');
 	const gb2 = gameboard();
 	gb2.setShip([2, { x: 0, y: 5 }, false], 'cruiser');
 	gb2.setShip([4, { x: 0, y: 6 }, true], 'destroyer');
-	const Player = player('Player', gb1, gb2);
+	const Player = player(uName, gb1, gb2);
 	const Computer = player('Computer', gb2, gb1);
 	const c2 = ai(Computer);
 	let moves = [];
