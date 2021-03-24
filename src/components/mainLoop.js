@@ -2,6 +2,7 @@ import ai from '../factories/ai/ai';
 import player from '../factories/player/player';
 import gameboard from '../factories/gameboard/gameboard';
 const mainLoop = () => {
+	const moves = [];
 	const gb1 = gameboard();
 	gb1.setShip([2, { x: 1, y: 1 }, true], 'cruiser');
 	gb1.setShip([4, { x: 0, y: 3 }, false], 'destroyer');
@@ -58,14 +59,14 @@ const mainLoop = () => {
 		}
 		return arr;
 	};
-	function handleClick(coord, setWon, setMove) {
+	function handleClick(coord, setWon, setM) {
 		let res = Player.play(coord);
 		if (/won!/.test(res)) {
 			setWon(Player.getDetails().name);
 			updateGameBoard(Player, Computer);
 			return;
 		}
-		console.log(res);
+		moves.push(res);
 		updateGameBoard(Player, Computer);
 		setTimeout(() => {
 			res = c2.play();
@@ -74,9 +75,10 @@ const mainLoop = () => {
 				updateGameBoard(Computer, Player);
 				return;
 			}
-			console.log(res);
+			moves.push(res);
 			updateGameBoard(Computer, Player);
 		}, 1000);
+		console.log(moves);
 	}
 	return {
 		displayShip,
@@ -86,6 +88,7 @@ const mainLoop = () => {
 		handleClick,
 		Player,
 		Computer,
+		moves,
 	};
 };
 

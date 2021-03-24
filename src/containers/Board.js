@@ -20,8 +20,7 @@ function Board(props) {
 												};
 												props.handler(
 													coord,
-													props.setWon,
-													props.setMove
+													props.setWon
 												);
 											}}
 										>
