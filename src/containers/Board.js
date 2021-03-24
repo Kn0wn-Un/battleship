@@ -12,20 +12,9 @@ function Board(props) {
 									return (
 										<td
 											key={index}
-											id={`${props.name} ${coords[0]}${coords[1]}`}
-											onClick={() => {
-												const coord = {
-													x: coords[0],
-													y: coords[1],
-												};
-												props.handler(
-													coord,
-													props.setWon
-												);
-											}}
-										>
-											{''}
-										</td>
+											id={`${coords[0]}${coords[1]} ${props.name}`}
+											onClick={props.handler}
+										></td>
 									);
 								})}
 							</tr>
