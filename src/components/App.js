@@ -13,7 +13,7 @@ function App() {
 	}, []);
 	return (
 		<div className="App">
-			<h3></h3>
+			<h3>{'Start!'}</h3>
 			<div className="play-area">
 				<Board handler={ml.handleClick} arr={arr} name={uName} />
 				<Board handler={() => {}} arr={arr} name={'Computer'} />

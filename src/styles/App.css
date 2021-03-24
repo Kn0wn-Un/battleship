@@ -51,9 +51,7 @@ td:hover {
 	background-color: red;
 }
 .hit,
-.miss {
-	pointer-events: none;
-}
+.miss,
 .won {
 	pointer-events: none;
 }
@@ -61,4 +59,8 @@ td:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+}
+.wait {
+	pointer-events: none;
+	border: 1px solid rgba(0, 0, 0, 0.33);
 }

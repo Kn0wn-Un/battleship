@@ -23,7 +23,7 @@ const mainLoop = (uName) => {
 	};
 	const displayMoves = () => {
 		const h = document.querySelector('h3');
-		h.innerHTML = moves.length === 0 ? 'Start!' : moves[moves.length - 1];
+		h.innerHTML = moves[moves.length - 1];
 	};
 	const displayShip = (player) => {
 		const ships = player.getDetails().ships;
@@ -63,7 +63,17 @@ const mainLoop = (uName) => {
 		}
 		return arr;
 	};
-	function handleClick(e) {
+	const wait = (isWait) => {
+		const name = Player.getDetails().name;
+		for (let i = 0; i < 10; i++)
+			for (let j = 0; j < 10; j++) {
+				let ele = document.getElementById(`${i}${j} ${name}`);
+				isWait
+					? ele.classList.add('wait')
+					: ele.classList.remove('wait');
+			}
+	};
+	const handleClick = (e) => {
 		const coord = { x: Number(e.target.id[0]), y: Number(e.target.id[1]) };
 		let res = Player.play(coord);
 		if (/won!/.test(res)) {
@@ -72,6 +82,7 @@ const mainLoop = (uName) => {
 			winner(Player.getDetails().name);
 			return;
 		} else moves.push(res);
+		wait(true);
 		updateGameBoard(Player);
 		setTimeout(() => {
 			res = c2.play();
@@ -81,10 +92,11 @@ const mainLoop = (uName) => {
 				winner(Player.getDetails().name);
 				return;
 			} else moves.push(res);
+			wait(false);
 			updateGameBoard(Computer);
 		}, 1000);
 		console.log(coord);
-	}
+	};
 	return {
 		displayShip,
 		updateGameBoard,
