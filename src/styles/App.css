@@ -35,9 +35,12 @@ td {
 table {
 	border: 2px solid black;
 	margin: 0 auto;
+	padding-right: 35px;
+	padding-bottom: 35px;
 }
 td:hover {
 	background-color: cyan;
+	cursor: crosshair;
 }
 .ship {
 	background-color: darkblue;
@@ -57,10 +60,17 @@ td:hover {
 }
 .play-area {
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
 .wait {
 	pointer-events: none;
 	border: 1px solid rgba(0, 0, 0, 0.33);
+}
+.coordinates,
+.coordinates:hover {
+	border: none;
+	padding: 10px;
+	background-color: white;
+	cursor: default;
 }

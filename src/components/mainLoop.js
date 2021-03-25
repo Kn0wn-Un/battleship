@@ -13,11 +13,15 @@ const mainLoop = (uName) => {
 	const c2 = ai(Computer);
 	let moves = [];
 	const winner = (name) => {
+		updateGameBoard(Player);
+		updateGameBoard(Computer);
 		const h = document.querySelector('h3');
 		h.innerHTML = `${name} won!`;
 		for (let i = 0; i < 10; i++)
 			for (let j = 0; j < 10; j++) {
-				let ele = document.getElementById(`${i}${j} ${name}`);
+				let ele = document.getElementById(
+					`${i}${j} ${Player.getDetails().name}`
+				);
 				ele.classList.add('won');
 			}
 	};
@@ -25,9 +29,9 @@ const mainLoop = (uName) => {
 		const h = document.querySelector('h3');
 		h.innerHTML = moves[moves.length - 1];
 	};
-	const displayShip = (player) => {
+	const displayShip = (player, opp) => {
 		const ships = player.getDetails().ships;
-		const name = player.getDetails().name;
+		const name = opp.getDetails().name;
 		for (let i = 0; i < ships.length; i++) {
 			let ele = document.getElementById(
 				`${ships[i][0]}${ships[i][1]} ${name}`
@@ -56,9 +60,9 @@ const mainLoop = (uName) => {
 	};
 	const mkArr = () => {
 		const arr = [];
-		for (let i = 0; i < 10; i++) {
+		for (let i = -1; i < 10; i++) {
 			let inArr = [];
-			for (let j = 0; j < 10; j++) inArr.push([i, j]);
+			for (let j = -1; j < 10; j++) inArr.push([i, j]);
 			arr.push(inArr);
 		}
 		return arr;
@@ -77,8 +81,6 @@ const mainLoop = (uName) => {
 		const coord = { x: Number(e.target.id[0]), y: Number(e.target.id[1]) };
 		let res = Player.play(coord);
 		if (/won!/.test(res)) {
-			updateGameBoard(Player);
-			updateGameBoard(Computer);
 			winner(Player.getDetails().name);
 			return;
 		} else moves.push(res);
@@ -87,9 +89,7 @@ const mainLoop = (uName) => {
 		setTimeout(() => {
 			res = c2.play();
 			if (/won!/.test(res)) {
-				updateGameBoard(Player);
-				updateGameBoard(Computer);
-				winner(Player.getDetails().name);
+				winner(Computer.getDetails().name);
 				return;
 			} else moves.push(res);
 			wait(false);

@@ -6,10 +6,11 @@ function App() {
 	const ml = mainLoop(uName);
 	const arr = ml.mkArr();
 	useEffect(() => {
-		ml.displayShip(ml.Player);
-		ml.displayShip(ml.Computer);
+		ml.displayShip(ml.Player, ml.Computer);
+		//ml.displayShip(ml.Computer, ml.Player);
 		let name = prompt('enter user name', 'Player');
-		if (name !== '') setName(name);
+		if (name === '') setName('A Shy Guy');
+		else setName(name);
 	}, []);
 	return (
 		<div className="App">
