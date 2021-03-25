@@ -61,7 +61,7 @@ const gameboard = () => {
 					if (sunkCtr === Object.keys(ships).length)
 						return checkAllSunk();
 					return `${hit} ${sh}`;
-				} else return `${hit} ${sh}`;
+				} else return `${hit}`;
 			}
 		shotsMiss.push([coords.x, coords.y]);
 		return 'miss';

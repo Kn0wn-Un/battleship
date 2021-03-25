@@ -17,6 +17,7 @@ const mainLoop = (uName) => {
 		updateGameBoard(Computer);
 		const h = document.querySelector('h3');
 		h.innerHTML = `${name} won!`;
+		h.classList.add('won');
 		for (let i = 0; i < 10; i++)
 			for (let j = 0; j < 10; j++) {
 				let ele = document.getElementById(

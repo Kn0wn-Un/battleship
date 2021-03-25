@@ -10,11 +10,15 @@ function App() {
 		//ml.displayShip(ml.Computer, ml.Player);
 		let name = prompt('enter user name', 'Player');
 		if (name === '') setName('A Shy Guy');
+		else if (name === null) setName('Player');
 		else setName(name);
 	}, []);
 	return (
-		<div className="App">
-			<h3>{'Start!'}</h3>
+		<div>
+			<h3>
+				{'Start!'}
+				<span></span>
+			</h3>
 			<div className="play-area">
 				<Board handler={ml.handleClick} arr={arr} name={uName} />
 				<Board handler={() => {}} arr={arr} name={'Computer'} />
