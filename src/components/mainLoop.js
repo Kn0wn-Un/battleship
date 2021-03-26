@@ -8,14 +8,14 @@ const mainLoop = (uName) => {
 	const Computer = player('Computer', gb2, gb1);
 	const c2 = ai(Computer);
 	let moves = [];
-	const randShips = () => {
+	const randShips = (gb) => {
 		while (true) {
 			const coords = {};
 			coords.x = Math.floor(Math.random() * 10);
 			coords.y = Math.floor(Math.random() * 10);
 			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
-			if (gb2.canPlaceShip([5, coords, h], 'Carrier')) {
-				gb2.setShip([5, coords, h], 'Carrier');
+			if (gb.canPlaceShip([5, coords, h], 'Carrier')) {
+				gb.setShip([5, coords, h], 'Carrier');
 				break;
 			}
 		}
@@ -24,8 +24,8 @@ const mainLoop = (uName) => {
 			coords.x = Math.floor(Math.random() * 10);
 			coords.y = Math.floor(Math.random() * 10);
 			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
-			if (gb2.canPlaceShip([4, coords, h], 'Battleship')) {
-				gb2.setShip([4, coords, h], 'Battleship');
+			if (gb.canPlaceShip([4, coords, h], 'Battleship')) {
+				gb.setShip([4, coords, h], 'Battleship');
 				break;
 			}
 		}
@@ -34,8 +34,8 @@ const mainLoop = (uName) => {
 			coords.x = Math.floor(Math.random() * 10);
 			coords.y = Math.floor(Math.random() * 10);
 			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
-			if (gb2.canPlaceShip([3, coords, h], 'Destroyer')) {
-				gb2.setShip([3, coords, h], 'Destroyer');
+			if (gb.canPlaceShip([3, coords, h], 'Destroyer')) {
+				gb.setShip([3, coords, h], 'Destroyer');
 				break;
 			}
 		}
@@ -44,8 +44,8 @@ const mainLoop = (uName) => {
 			coords.x = Math.floor(Math.random() * 10);
 			coords.y = Math.floor(Math.random() * 10);
 			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
-			if (gb2.canPlaceShip([2, coords, h], 'Cruiser')) {
-				gb2.setShip([2, coords, h], 'Cruiser');
+			if (gb.canPlaceShip([2, coords, h], 'Cruiser')) {
+				gb.setShip([2, coords, h], 'Cruiser');
 				break;
 			}
 		}
@@ -54,13 +54,13 @@ const mainLoop = (uName) => {
 			coords.x = Math.floor(Math.random() * 10);
 			coords.y = Math.floor(Math.random() * 10);
 			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
-			if (gb2.canPlaceShip([1, coords, h], 'Patrol')) {
-				gb2.setShip([1, coords, h], 'Patrol');
+			if (gb.canPlaceShip([1, coords, h], 'Patrol')) {
+				gb.setShip([1, coords, h], 'Patrol');
 				break;
 			}
 		}
 	};
-	randShips();
+	randShips(gb2);
 	const userShips = (s) => {
 		console.log(s);
 		for (let i in s) {
