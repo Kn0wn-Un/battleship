@@ -1,9 +1,9 @@
 import '../styles/App.css';
-function PlayerBoard(props) {
+function PlacementBoard(props) {
 	return (
 		<div>
 			<h2>{props.name}</h2>
-			<table>
+			<table className="place-board">
 				<tbody>
 					{props.arr.map((inArr, index) => {
 						return index === 0 ? (
@@ -33,7 +33,7 @@ function PlayerBoard(props) {
 									) : (
 										<td
 											key={index}
-											id={`${coords[0]}${coords[1]} ${props.name}`}
+											id={`${coords[0]}${coords[1]}`}
 											onClick={props.handler}
 										></td>
 									);
@@ -47,4 +47,4 @@ function PlayerBoard(props) {
 	);
 }
 
-export default PlayerBoard;
+export default PlacementBoard;

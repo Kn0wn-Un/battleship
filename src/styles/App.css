@@ -90,3 +90,7 @@ td:hover {
 .board {
 	padding-left: 50px;
 }
+.place-board td:hover {
+	background-color: white;
+	cursor: move;
+}

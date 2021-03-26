@@ -11,10 +11,13 @@ function ComputerBoard(props) {
 								{inArr.map((coords, index) => {
 									if (index === 0)
 										return (
-											<td className="coordinates"></td>
+											<td
+												key={index}
+												className="coordinates"
+											></td>
 										);
 									return (
-										<td className="coordinates">
+										<td key={index} className="coordinates">
 											{String.fromCharCode(index + 64)}
 										</td>
 									);
