@@ -7,9 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 ReactDOM.render(
 	<Router>
 		<Switch>
-			<Route path="/play">
-				<App />
-			</Route>
+			<Route path="/play" component={App}></Route>
 			<Route path="/">
 				<GameStart />
 			</Route>

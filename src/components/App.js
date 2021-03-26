@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PlayerBoard from '../containers/PlayerBoard';
 import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
-function App() {
+function App(props) {
 	const [uName, setName] = useState('Player');
 	const ml = mainLoop(uName);
 	const arr = ml.mkArr();
+	ml.userShips(props.location.state);
 	useEffect(() => {
 		ml.displayShip(ml.Player, ml.Computer);
 		//ml.displayShip(ml.Computer, ml.Player);

@@ -2,7 +2,7 @@ import '../styles/App.css';
 import gameboard from '../factories/gameboard/gameboard';
 function PlacementBoard(props) {
 	const temp = gameboard();
-	const shipsData = [];
+	const sd = props.shipsData;
 	const displayShips = () => {
 		const ships = temp.getallShips();
 		console.log(ships);
@@ -13,20 +13,22 @@ function PlacementBoard(props) {
 	};
 	const drop = (e) => {
 		e.preventDefault();
-		const len = e.dataTransfer.getData('ship_id');
+		const len = Number(e.dataTransfer.getData('ship_id'));
 		const ship = document.getElementById(len);
 		ship.style.display = 'block';
-		console.log(len);
-		console.log(e.target.id);
 		const id = e.target.id;
 		const coords = { x: Number(id[0]), y: Number(id[1]) };
-		console.log(coords);
 		if (temp.canPlaceShip([len, coords, true])) {
 			temp.setShip([len, coords, true]);
 			displayShips();
 			ship.style.display = 'none';
-			shipsData.push([len, coords, true]);
-			console.log(shipsData);
+			if (len === 5) sd.a = [len, coords, true];
+			if (len === 4) sd.b = [len, coords, true];
+			if (len === 3) sd.c = [len, coords, true];
+			if (len === 2) sd.d = [len, coords, true];
+			if (len === 1) sd.e = [len, coords, true];
+			props.setShipsData(sd);
+			console.log(sd);
 		}
 	};
 	const dragOver = (e) => {
