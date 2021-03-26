@@ -1,5 +1,5 @@
 import '../styles/App.css';
-function Board(props) {
+function PlayerBoard(props) {
 	return (
 		<div>
 			<h3>{props.name}</h3>
@@ -44,4 +44,4 @@ function Board(props) {
 	);
 }
 
-export default Board;
+export default PlayerBoard;

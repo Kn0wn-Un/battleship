@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Board from '../containers/Board';
+import PlayerBoard from '../containers/PlayerBoard';
+import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
 function App() {
 	const [uName, setName] = useState('Player');
@@ -20,8 +21,8 @@ function App() {
 				<span></span>
 			</h3>
 			<div className="play-area">
-				<Board handler={ml.handleClick} arr={arr} name={uName} />
-				<Board handler={() => {}} arr={arr} name={'Computer'} />
+				<PlayerBoard handler={ml.handleClick} arr={arr} name={uName} />
+				<ComputerBoard arr={arr} />
 			</div>
 		</div>
 	);
