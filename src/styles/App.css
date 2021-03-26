@@ -92,5 +92,21 @@ td:hover {
 }
 .place-board td:hover {
 	background-color: white;
-	cursor: move;
+	cursor: default;
+}
+.place-board .ship:hover {
+	background-color: darkblue;
+}
+table.place-ships {
+	border: none;
+	padding: 0px;
+}
+.place-ships td,
+.place-ships td:hover {
+	background-color: darkblue;
+	cursor: pointer;
+	border: 1px solid black;
+}
+.invisible {
+	display: none;
 }
