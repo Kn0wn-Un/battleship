@@ -9,7 +9,7 @@ function App(props) {
 	ml.userShips(props.location.state);
 	useEffect(() => {
 		ml.displayShip(ml.Player, ml.Computer);
-		//ml.displayShip(ml.Computer, ml.Player);
+		ml.displayShip(ml.Computer, ml.Player);
 		let name = prompt('enter user name', 'Player');
 		if (name === '') setName('A Shy Guy');
 		else if (name === null) setName('Player');

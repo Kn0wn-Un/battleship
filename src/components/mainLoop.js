@@ -4,12 +4,63 @@ import gameboard from '../factories/gameboard/gameboard';
 const mainLoop = (uName) => {
 	const gb1 = gameboard();
 	const gb2 = gameboard();
-	gb2.setShip([2, { x: 0, y: 5 }, false], 'cruiser');
-	gb2.setShip([4, { x: 0, y: 6 }, true], 'destroyer');
 	const Player = player(uName, gb1, gb2);
 	const Computer = player('Computer', gb2, gb1);
 	const c2 = ai(Computer);
 	let moves = [];
+	const randShips = () => {
+		while (true) {
+			const coords = {};
+			coords.x = Math.floor(Math.random() * 10);
+			coords.y = Math.floor(Math.random() * 10);
+			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
+			if (gb2.canPlaceShip([5, coords, h], 'Carrier')) {
+				gb2.setShip([5, coords, h], 'Carrier');
+				break;
+			}
+		}
+		while (true) {
+			const coords = {};
+			coords.x = Math.floor(Math.random() * 10);
+			coords.y = Math.floor(Math.random() * 10);
+			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
+			if (gb2.canPlaceShip([4, coords, h], 'Battleship')) {
+				gb2.setShip([4, coords, h], 'Battleship');
+				break;
+			}
+		}
+		while (true) {
+			const coords = {};
+			coords.x = Math.floor(Math.random() * 10);
+			coords.y = Math.floor(Math.random() * 10);
+			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
+			if (gb2.canPlaceShip([3, coords, h], 'Destroyer')) {
+				gb2.setShip([3, coords, h], 'Destroyer');
+				break;
+			}
+		}
+		while (true) {
+			const coords = {};
+			coords.x = Math.floor(Math.random() * 10);
+			coords.y = Math.floor(Math.random() * 10);
+			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
+			if (gb2.canPlaceShip([2, coords, h], 'Cruiser')) {
+				gb2.setShip([2, coords, h], 'Cruiser');
+				break;
+			}
+		}
+		while (true) {
+			const coords = {};
+			coords.x = Math.floor(Math.random() * 10);
+			coords.y = Math.floor(Math.random() * 10);
+			const h = Math.floor(Math.random() * 2) === 0 ? true : false;
+			if (gb2.canPlaceShip([1, coords, h], 'Patrol')) {
+				gb2.setShip([1, coords, h], 'Patrol');
+				break;
+			}
+		}
+	};
+	randShips();
 	const userShips = (s) => {
 		console.log(s);
 		for (let i in s) {
