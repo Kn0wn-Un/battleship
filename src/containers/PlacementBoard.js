@@ -22,11 +22,11 @@ function PlacementBoard(props) {
 			temp.setShip([len, coords, true]);
 			displayShips();
 			ship.style.display = 'none';
-			if (len === 5) sd.a = [len, coords, true];
-			if (len === 4) sd.b = [len, coords, true];
-			if (len === 3) sd.c = [len, coords, true];
-			if (len === 2) sd.d = [len, coords, true];
-			if (len === 1) sd.e = [len, coords, true];
+			if (len === 5) sd['Carrier'] = [len, coords, true];
+			if (len === 4) sd['Battleship'] = [len, coords, true];
+			if (len === 3) sd['Destroyer'] = [len, coords, true];
+			if (len === 2) sd['Cruiser'] = [len, coords, true];
+			if (len === 1) sd['Patrol'] = [len, coords, true];
 			props.setShipsData(sd);
 			console.log(sd);
 		}
