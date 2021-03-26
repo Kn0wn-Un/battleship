@@ -15,7 +15,7 @@ const mainLoop = (uName) => {
 	const winner = (name) => {
 		updateGameBoard(Player);
 		updateGameBoard(Computer);
-		const h = document.querySelector('h3');
+		const h = document.querySelector('h1');
 		h.innerHTML = `${name} won!`;
 		h.classList.add('won');
 		for (let i = 0; i < 10; i++)
@@ -27,7 +27,7 @@ const mainLoop = (uName) => {
 			}
 	};
 	const displayMoves = () => {
-		const h = document.querySelector('h3');
+		const h = document.querySelector('h1');
 		h.innerHTML = moves[moves.length - 1];
 	};
 	const displayShip = (player, opp) => {

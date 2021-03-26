@@ -16,10 +16,10 @@ function App() {
 	}, []);
 	return (
 		<div>
-			<h3>
+			<h1>
 				{'Start!'}
 				<span></span>
-			</h3>
+			</h1>
 			<div className="play-area">
 				<PlayerBoard handler={ml.handleClick} arr={arr} name={uName} />
 				<ComputerBoard arr={arr} />

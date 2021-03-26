@@ -1,8 +1,8 @@
 import '../styles/App.css';
 function ComputerBoard(props) {
 	return (
-		<div>
-			<h3>Computer</h3>
+		<div className="board">
+			<h2>Computer</h2>
 			<table className="computer-board">
 				<tbody>
 					{props.arr.map((inArr, index) => {

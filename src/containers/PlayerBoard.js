@@ -2,7 +2,7 @@ import '../styles/App.css';
 function PlayerBoard(props) {
 	return (
 		<div>
-			<h3>{props.name}</h3>
+			<h2>{props.name}</h2>
 			<table>
 				<tbody>
 					{props.arr.map((inArr, index) => {
