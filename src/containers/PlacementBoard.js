@@ -11,6 +11,16 @@ function PlacementBoard(props) {
 			ele.classList.add('ship');
 		}
 	};
+	const rotateShips = () => {
+		for (let i in sd) {
+			let ele = document.getElementById(`${sd[i][1].x}${sd[i][1].y}`);
+			ele.addEventListener('click', () => {
+				temp.setShip([sd[i][0], sd[i][1], !sd[i][2]]);
+				displayShips();
+				console.log([sd[i][0], sd[i][1], !sd[i][2]]);
+			});
+		}
+	};
 	const drop = (e) => {
 		e.preventDefault();
 		const len = Number(e.dataTransfer.getData('ship_id'));
@@ -28,6 +38,7 @@ function PlacementBoard(props) {
 			if (len === 2) sd['Cruiser'] = [len, coords, true];
 			if (len === 1) sd['Patrol'] = [len, coords, true];
 			props.setShipsData(sd);
+			rotateShips();
 			console.log(sd);
 		}
 	};
@@ -67,7 +78,6 @@ function PlacementBoard(props) {
 										<td
 											key={index}
 											id={`${coords[0]}${coords[1]}`}
-											onClick={props.handler}
 											onDrop={drop}
 											onDragOver={dragOver}
 										></td>

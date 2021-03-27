@@ -17,9 +17,6 @@ function GameStart() {
 			<h1>Place Your Ships</h1>
 			<PlacementBoard
 				arr={arr}
-				handler={(e) => {
-					console.log(e.target.id);
-				}}
 				setShipsData={setShipsData}
 				shipsData={shipsData}
 			/>
