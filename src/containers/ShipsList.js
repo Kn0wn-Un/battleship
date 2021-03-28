@@ -24,11 +24,21 @@ function ShipsList(props) {
 			onDragEnd={dragEnd}
 		>
 			<tbody>
-				<tr>
-					{arr.map((d, index) => {
-						return <td key={index} className="ship"></td>;
-					})}
-				</tr>
+				{props.isHor ? (
+					<tr>
+						{arr.map((d, index) => {
+							return <td key={index} className="ship"></td>;
+						})}
+					</tr>
+				) : (
+					arr.map((d, index) => {
+						return (
+							<tr key={index}>
+								<td className="ship"></td>
+							</tr>
+						);
+					})
+				)}
 			</tbody>
 		</table>
 	);

@@ -11,16 +11,6 @@ function PlacementBoard(props) {
 			ele.classList.add('ship');
 		}
 	};
-	const rotateShips = () => {
-		for (let i in sd) {
-			let ele = document.getElementById(`${sd[i][1].x}${sd[i][1].y}`);
-			ele.addEventListener('click', () => {
-				temp.setShip([sd[i][0], sd[i][1], !sd[i][2]]);
-				displayShips();
-				console.log([sd[i][0], sd[i][1], !sd[i][2]]);
-			});
-		}
-	};
 	const drop = (e) => {
 		e.preventDefault();
 		const len = Number(e.dataTransfer.getData('ship_id'));
@@ -28,17 +18,16 @@ function PlacementBoard(props) {
 		ship.style.display = 'block';
 		const id = e.target.id;
 		const coords = { x: Number(id[0]), y: Number(id[1]) };
-		if (temp.canPlaceShip([len, coords, true])) {
-			temp.setShip([len, coords, true]);
+		if (temp.canPlaceShip([len, coords, props.isHor])) {
+			temp.setShip([len, coords, props.isHor]);
 			displayShips();
 			ship.style.display = 'none';
-			if (len === 5) sd['Carrier'] = [len, coords, true];
-			if (len === 4) sd['Battleship'] = [len, coords, true];
-			if (len === 3) sd['Destroyer'] = [len, coords, true];
-			if (len === 2) sd['Cruiser'] = [len, coords, true];
-			if (len === 1) sd['Patrol'] = [len, coords, true];
+			if (len === 5) sd['Carrier'] = [len, coords, props.isHor];
+			if (len === 4) sd['Battleship'] = [len, coords, props.isHor];
+			if (len === 3) sd['Destroyer'] = [len, coords, props.isHor];
+			if (len === 2) sd['Cruiser'] = [len, coords, props.isHor];
+			if (len === 1) sd['Patrol'] = [len, coords, props.isHor];
 			props.setShipsData(sd);
-			rotateShips();
 			console.log(sd);
 		}
 	};

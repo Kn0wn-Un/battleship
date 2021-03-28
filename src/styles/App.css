@@ -110,3 +110,8 @@ table.place-ships {
 .invisible {
 	display: none;
 }
+.ship-box {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-start;
+}
