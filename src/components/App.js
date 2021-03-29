@@ -3,7 +3,8 @@ import PlayerBoard from '../containers/PlayerBoard';
 import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
 function App(props) {
-	if (props.location.name === null) {
+	if (props.location.name === undefined) {
+		window.location.replace('/start');
 	}
 	const ml = mainLoop(props.location.name);
 	const arr = ml.mkArr();
