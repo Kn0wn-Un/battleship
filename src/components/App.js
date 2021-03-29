@@ -9,9 +9,12 @@ function App(props) {
 	const ml = mainLoop(props.location.name);
 	const arr = ml.mkArr();
 	ml.userShips(props.location.ships);
+	window.onbeforeunload = function () {
+		return 'Progress will be lost!, are you sure?';
+	};
 	useEffect(() => {
 		ml.displayShip(ml.Player, ml.Computer);
-		ml.displayShip(ml.Computer, ml.Player);
+		//ml.displayShip(ml.Computer, ml.Player);
 	}, []);
 	return (
 		<div>
