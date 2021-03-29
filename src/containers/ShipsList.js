@@ -15,32 +15,35 @@ function ShipsList(props) {
 	};
 
 	return (
-		<table
-			className="place-ships"
-			id={arr.length}
-			draggable="true"
-			onDragStart={dragStart}
-			onDragOver={dragOver}
-			onDragEnd={dragEnd}
-		>
-			<tbody>
-				{props.isHor ? (
-					<tr>
-						{arr.map((d, index) => {
-							return <td key={index} className="ship"></td>;
-						})}
-					</tr>
-				) : (
-					arr.map((d, index) => {
-						return (
-							<tr key={index}>
-								<td className="ship"></td>
-							</tr>
-						);
-					})
-				)}
-			</tbody>
-		</table>
+		<div>
+			<table
+				className="place-ships"
+				id={arr.length}
+				draggable="true"
+				onDragStart={dragStart}
+				onDragOver={dragOver}
+				onDragEnd={dragEnd}
+			>
+				<tbody>
+					{props.isHor ? (
+						<tr>
+							{arr.map((d, index) => {
+								return <td key={index} className="ship"></td>;
+							})}
+						</tr>
+					) : (
+						arr.map((d, index) => {
+							return (
+								<tr key={index}>
+									<td className="ship"></td>
+								</tr>
+							);
+						})
+					)}
+				</tbody>
+			</table>
+			<span>{props.name}</span>
+		</div>
 	);
 }
 export default ShipsList;

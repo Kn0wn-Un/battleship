@@ -5,10 +5,13 @@ function PlacementBoard(props) {
 	const sd = props.shipsData;
 	const displayShips = () => {
 		const ships = temp.getallShips();
-		console.log(ships);
 		for (let i = 0; i < ships.length; i++) {
 			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
 			ele.classList.add('ship');
+		}
+		if (ships.length === 15) {
+			const play = document.getElementById('play');
+			play.disabled = false;
 		}
 	};
 	const drop = (e) => {
