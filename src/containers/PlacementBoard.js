@@ -9,7 +9,12 @@ function PlacementBoard(props) {
 			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
 			ele.classList.add('ship');
 		}
-		if (ships.length === 15) {
+		let ctr = 0;
+		for (let i in sd) {
+			ctr++;
+			console.log(i);
+		}
+		if (ctr === 4) {
 			const play = document.getElementById('play');
 			play.disabled = false;
 		}

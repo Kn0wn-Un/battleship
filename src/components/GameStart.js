@@ -7,10 +7,21 @@ import '../styles/App.css';
 function GameStart() {
 	const ml = mainLoop();
 	const arr = ml.mkArr();
+	const [name, setName] = useState('Player');
 	const [shipsData, setShipsData] = useState({});
 	const [isHor, setIsHor] = useState(true);
 	return (
 		<div>
+			<div>
+				<span>Enter Name:</span>
+				<input
+					value={name}
+					onChange={(e) => {
+						setName(e.target.value);
+						console.log(e.target.value);
+					}}
+				></input>
+			</div>
 			<div className="place-area">
 				<div>
 					<h1>Place Your Ships</h1>
@@ -24,7 +35,7 @@ function GameStart() {
 						to={{
 							pathname: '/play',
 							ships: shipsData,
-							name: 'Player',
+							name: name,
 						}}
 					>
 						<button id="play" disabled={true}>

@@ -3,8 +3,11 @@ import PlayerBoard from '../containers/PlayerBoard';
 import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
 function App(props) {
-	if (props.location.name === undefined) {
+	if (props.location.ships === undefined) {
 		window.location.replace('/start');
+	}
+	if (props.location.name === '') {
+		props.location.name = 'A Shy Person';
 	}
 	const ml = mainLoop(props.location.name);
 	const arr = ml.mkArr();
