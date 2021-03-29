@@ -20,7 +20,13 @@ function GameStart() {
 						shipsData={shipsData}
 						isHor={isHor}
 					/>
-					<Link to={{ pathname: '/play', state: shipsData }}>
+					<Link
+						to={{
+							pathname: '/play',
+							ships: shipsData,
+							name: 'Player',
+						}}
+					>
 						<button id="play" disabled={true}>
 							Play
 						</button>

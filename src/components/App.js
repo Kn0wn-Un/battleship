@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PlayerBoard from '../containers/PlayerBoard';
 import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
 function App(props) {
-	const [uName, setName] = useState('Player');
-	const ml = mainLoop(uName);
+	if (props.location.name === null) {
+	}
+	const ml = mainLoop(props.location.name);
 	const arr = ml.mkArr();
-	ml.userShips(props.location.state);
+	ml.userShips(props.location.ships);
 	useEffect(() => {
 		ml.displayShip(ml.Player, ml.Computer);
 		ml.displayShip(ml.Computer, ml.Player);
-		let name = prompt('enter user name', 'Player');
-		if (name === '') setName('A Shy Guy');
-		else if (name === null) setName('Player');
-		else setName(name);
 	}, []);
 	return (
 		<div>
@@ -22,7 +19,11 @@ function App(props) {
 				<span></span>
 			</h1>
 			<div className="play-area">
-				<PlayerBoard handler={ml.handleClick} arr={arr} name={uName} />
+				<PlayerBoard
+					handler={ml.handleClick}
+					arr={arr}
+					name={props.location.name}
+				/>
 				<ComputerBoard arr={arr} />
 			</div>
 		</div>
