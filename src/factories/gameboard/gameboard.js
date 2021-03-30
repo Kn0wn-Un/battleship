@@ -45,6 +45,11 @@ const gameboard = () => {
 	const getMissShots = () => {
 		return shotsMiss.sort();
 	};
+	const removeAllShips = () => {
+		for (let i = 0; i < allShipsPos.length; i++) {
+			allShipsPos.pop();
+		}
+	};
 	const receiveAttack = (coords) => {
 		if (isDupShot(coords)) return 'duplicate shot';
 		if (coords.x > 9 || coords.y > 9) return 'err';
@@ -103,6 +108,8 @@ const gameboard = () => {
 		canPlaceShip,
 		getHitShots,
 		getMissShots,
+		removeAllShips,
+		ships,
 	};
 };
 

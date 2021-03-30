@@ -1,24 +1,8 @@
 import '../styles/App.css';
-import gameboard from '../factories/gameboard/gameboard';
+
 function PlacementBoard(props) {
-	const temp = gameboard();
+	const temp = props.gb;
 	const sd = props.shipsData;
-	const displayShips = () => {
-		const ships = temp.getallShips();
-		for (let i = 0; i < ships.length; i++) {
-			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
-			ele.classList.add('ship');
-		}
-		let ctr = 0;
-		for (let i in sd) {
-			ctr++;
-			console.log(i);
-		}
-		if (ctr === 4) {
-			const play = document.getElementById('play');
-			play.disabled = false;
-		}
-	};
 	const drop = (e) => {
 		e.preventDefault();
 		const len = Number(e.dataTransfer.getData('ship_id'));
@@ -28,7 +12,7 @@ function PlacementBoard(props) {
 		const coords = { x: Number(id[0]), y: Number(id[1]) };
 		if (temp.canPlaceShip([len, coords, props.isHor])) {
 			temp.setShip([len, coords, props.isHor]);
-			displayShips();
+			props.displayShips();
 			ship.style.display = 'none';
 			if (len === 5) sd['Carrier'] = [len, coords, props.isHor];
 			if (len === 4) sd['Battleship'] = [len, coords, props.isHor];

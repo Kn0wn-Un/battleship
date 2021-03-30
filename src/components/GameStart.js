@@ -3,13 +3,35 @@ import { useState } from 'react';
 import PlacementBoard from '../containers/PlacementBoard';
 import ShipsList from '../containers/ShipsList';
 import mainLoop from './mainLoop';
+import gameboard from '../factories/gameboard/gameboard';
 import '../styles/App.css';
 function GameStart() {
 	const ml = mainLoop();
 	const arr = ml.mkArr();
+	const gb = gameboard();
 	const [name, setName] = useState('Player');
 	const [shipsData, setShipsData] = useState({});
 	const [isHor, setIsHor] = useState(true);
+	const displayShips = () => {
+		const ships = gb.getallShips();
+		for (let i = 0; i < ships.length; i++) {
+			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
+			ele.classList.add('ship');
+			//ele.draggable = true;
+		}
+		if (gb.getallShips().length === 15) {
+			const play = document.getElementById('play');
+			play.disabled = false;
+		}
+	};
+	const clearBoard = () => {
+		gb.removeAllShips();
+		for (let i = 0; i < 10; i++)
+			for (let j = 0; j < 10; j++) {
+				let ele = document.getElementById(`${i}${j}`);
+				ele.classList.remove('ship');
+			}
+	};
 	return (
 		<div>
 			<div>
@@ -30,6 +52,8 @@ function GameStart() {
 						setShipsData={setShipsData}
 						shipsData={shipsData}
 						isHor={isHor}
+						gb={gb}
+						displayShips={displayShips}
 					/>
 					<Link
 						to={{
@@ -42,6 +66,22 @@ function GameStart() {
 							Play
 						</button>
 					</Link>
+					<button
+						onClick={() => {
+							clearBoard();
+							setShipsData(ml.randShips(gb));
+							displayShips();
+						}}
+					>
+						Randomaize
+					</button>
+					<button
+						onClick={() => {
+							window.location.reload();
+						}}
+					>
+						Reset
+					</button>
 				</div>
 				<div className="ship-container">
 					<div>

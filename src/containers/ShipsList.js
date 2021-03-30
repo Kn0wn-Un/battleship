@@ -16,6 +16,7 @@ function ShipsList(props) {
 
 	return (
 		<div>
+			<div>{props.name}</div>
 			<table
 				className="place-ships"
 				id={arr.length}
@@ -42,7 +43,6 @@ function ShipsList(props) {
 					)}
 				</tbody>
 			</table>
-			<span>{props.name}</span>
 		</div>
 	);
 }
