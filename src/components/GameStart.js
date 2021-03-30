@@ -31,6 +31,11 @@ function GameStart() {
 				let ele = document.getElementById(`${i}${j}`);
 				ele.classList.remove('ship');
 			}
+		let ps = document.querySelectorAll('.place-ships');
+		for (let i = 0; i < ps.length; i++) {
+			ps[i].classList.add('no-drag');
+			ps[i].draggable = false;
+		}
 	};
 	return (
 		<div>
