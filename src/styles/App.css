@@ -122,10 +122,12 @@ table.place-ships {
 .ship-container {
 	height: 500px;
 	width: 500px;
+	margin-left: 3vw;
+	margin-top: 15px;
 }
 .place-area {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 }
 

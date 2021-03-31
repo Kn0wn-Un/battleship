@@ -10,6 +10,7 @@ function GameStart() {
 	const arr = ml.mkArr();
 	const gb = gameboard();
 	const [name, setName] = useState('Player');
+	const [nPtr, setPtr] = useState(true);
 	const [shipsData, setShipsData] = useState({});
 	const [isHor, setIsHor] = useState(true);
 	const displayShips = () => {
@@ -17,7 +18,6 @@ function GameStart() {
 		for (let i = 0; i < ships.length; i++) {
 			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
 			ele.classList.add('ship');
-			//ele.draggable = true;
 		}
 		if (gb.getallShips().length === 15) {
 			const play = document.getElementById('play');
@@ -32,23 +32,40 @@ function GameStart() {
 				ele.classList.remove('ship');
 			}
 		let ps = document.querySelectorAll('.place-ships');
+		for (let i = 0; i < ps.length; i++) ps[i].style.display = null;
+	};
+	const isDrag = (drag) => {
+		let ps = document.querySelectorAll('.place-ships');
 		for (let i = 0; i < ps.length; i++) {
-			ps[i].classList.add('no-drag');
-			ps[i].draggable = false;
+			if (drag) {
+				ps[i].classList.remove('no-drag');
+				ps[i].draggable = true;
+			} else {
+				ps[i].classList.add('no-drag');
+				ps[i].draggable = false;
+			}
 		}
 	};
 	return (
 		<div>
-			<div>
-				<span>Enter Name:</span>
-				<input
-					value={name}
-					onChange={(e) => {
-						setName(e.target.value);
-						console.log(e.target.value);
-					}}
-				></input>
-			</div>
+			{nPtr ? (
+				<div>
+					<span>Enter Name:</span>
+					<input
+						value={name}
+						onChange={(e) => {
+							setName(e.target.value);
+						}}
+					></input>
+					<button
+						onClick={() => {
+							setPtr(false);
+						}}
+					>
+						Submit
+					</button>
+				</div>
+			) : null}
 			<div className="place-area">
 				<div>
 					<h1>Place Your Ships</h1>
@@ -74,6 +91,7 @@ function GameStart() {
 					<button
 						onClick={() => {
 							clearBoard();
+							isDrag(false);
 							setShipsData(ml.randShips(gb));
 							displayShips();
 						}}
@@ -82,7 +100,10 @@ function GameStart() {
 					</button>
 					<button
 						onClick={() => {
-							window.location.reload();
+							clearBoard();
+							isDrag(true);
+							const play = document.getElementById('play');
+							play.disabled = true;
 						}}
 					>
 						Reset
