@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PlacementBoard from '../containers/PlacementBoard';
 import ShipsList from '../containers/ShipsList';
 import mainLoop from './mainLoop';
 import gameboard from '../factories/gameboard/gameboard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import '../styles/style.css';
 function GameStart() {
 	const ml = mainLoop();
@@ -46,26 +48,42 @@ function GameStart() {
 			}
 		}
 	};
+	useEffect(() => {
+		isDrag(false);
+	}, []);
 	return (
 		<div>
 			{nPtr ? (
-				<div>
-					<span>Enter Name:</span>
-					<input
-						value={name}
-						onChange={(e) => {
-							setName(e.target.value);
-						}}
-					></input>
-					<button
-						onClick={() => {
-							setPtr(false);
-						}}
-					>
-						Submit
-					</button>
+				<div className="name-container">
+					<div className="name"> Enter name: </div>
+					<div>
+						<input
+							value={name}
+							onChange={(e) => {
+								setName(e.target.value);
+							}}
+							className="name-input"
+						></input>
+						<span
+							className="but"
+							onClick={() => {
+								let n = document.getElementsByClassName(
+									'name-container'
+								);
+								n[0].classList.add('remove-name-container');
+								setTimeout(() => {
+									setPtr(false);
+									isDrag(true);
+								}, 1000);
+							}}
+						>
+							<FontAwesomeIcon icon={faArrowRight} />
+						</span>
+					</div>
 				</div>
-			) : null}
+			) : (
+				<div style={{ height: '197px' }}></div>
+			)}
 			<div className="place-area">
 				<div>
 					<h1>Place Your Ships</h1>
@@ -96,7 +114,7 @@ function GameStart() {
 							displayShips();
 						}}
 					>
-						Randomaize
+						Randomize
 					</button>
 					<button
 						onClick={() => {

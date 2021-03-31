@@ -1,3 +1,6 @@
+body {
+	margin: 0;
+}
 h1 {
 	text-align: center;
 	padding-top: 21px;
@@ -129,10 +132,58 @@ table.place-ships {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	top: -150px;
 }
-
 .no-drag .ship,
 .no-drag .ship:hover {
 	background-color: rgba(0, 0, 139, 0.5);
 	cursor: default;
+}
+.name-container {
+	background-color: rgb(255, 181, 181);
+	padding: 50px 50px 50px 75px;
+	position: relative;
+	top: 25vh;
+	z-index: 1;
+}
+.name {
+	font-size: 24px;
+	margin: 10px 0px;
+}
+.name-input {
+	font-size: 30px;
+	border: 2px solid white;
+	outline: none;
+	margin-left: 4vw;
+	background-color: rgba(255, 0, 0, 0.25);
+}
+.name-input:hover {
+	border-bottom: 2px solid rgba(255, 0, 0, 0.72);
+}
+.name-input:focus-visible {
+	border-bottom: 2px solid red;
+}
+.name-container .but {
+	color: rgba(255, 0, 0, 0.25);
+	font-size: 35px;
+	padding: 10px;
+}
+.name-container .but:hover {
+	color: rgba(255, 0, 0, 0.75);
+	cursor: pointer;
+	padding: 20px;
+}
+.remove-name-container {
+	animation-name: remove-banner;
+	animation-duration: 1s;
+}
+@keyframes remove-banner {
+	from {
+		left: 0px;
+	}
+	to {
+		left: 100%;
+		background-color: rgb(0, 255, 0);
+	}
 }
