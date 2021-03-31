@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PlayerBoard from '../containers/PlayerBoard';
 import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
+import { Link } from 'react-router-dom';
 function App(props) {
 	if (props.location.ships === undefined) {
 		window.location.replace('/start');
@@ -33,6 +34,9 @@ function App(props) {
 				/>
 				<ComputerBoard arr={arr} />
 			</div>
+			<Link to="/start">
+				<button>Restart</button>
+			</Link>
 		</div>
 	);
 }

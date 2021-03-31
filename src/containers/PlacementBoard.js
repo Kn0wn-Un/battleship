@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import '../styles/style.css';
 
 function PlacementBoard(props) {
 	const temp = props.gb;

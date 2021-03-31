@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import '../styles/style.css';
 function PlayerBoard(props) {
 	return (
 		<div>

@@ -4,7 +4,7 @@ import PlacementBoard from '../containers/PlacementBoard';
 import ShipsList from '../containers/ShipsList';
 import mainLoop from './mainLoop';
 import gameboard from '../factories/gameboard/gameboard';
-import '../styles/App.css';
+import '../styles/style.css';
 function GameStart() {
 	const ml = mainLoop();
 	const arr = ml.mkArr();

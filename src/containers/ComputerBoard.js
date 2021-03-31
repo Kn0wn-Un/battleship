@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import '../styles/style.css';
 function ComputerBoard(props) {
 	return (
 		<div className="board">

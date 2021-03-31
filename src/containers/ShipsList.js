@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import '../styles/style.css';
 function ShipsList(props) {
 	let arr = [...Array(props.length)];
 	const dragStart = (e) => {
