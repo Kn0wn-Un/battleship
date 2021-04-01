@@ -131,7 +131,7 @@ table.place-ships {
 .place-area {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: baseline;
 	position: relative;
 	top: -150px;
 }
@@ -186,4 +186,21 @@ table.place-ships {
 		left: 100%;
 		background-color: rgb(0, 255, 0);
 	}
+}
+.btn-area {
+	padding: 20px;
+	margin-left: -40px;
+}
+.btn {
+	display: inline-block;
+	border: 1px solid black;
+	cursor: pointer;
+	text-align: center;
+	padding: 10px;
+	margin: 20px;
+}
+.btn:hover {
+	transform: scale(1.2);
+	padding: 9px;
+	border: 2px solid black;
 }

@@ -95,48 +95,53 @@ function GameStart() {
 						gb={gb}
 						displayShips={displayShips}
 					/>
-					<Link
-						to={{
-							pathname: '/play',
-							ships: shipsData,
-							name: name,
-						}}
-					>
-						<button id="play" disabled={true}>
-							Play
-						</button>
-					</Link>
-					<button
-						onClick={() => {
-							clearBoard();
-							isDrag(false);
-							setShipsData(ml.randShips(gb));
-							displayShips();
-						}}
-					>
-						Randomize
-					</button>
-					<button
-						onClick={() => {
-							clearBoard();
-							isDrag(true);
-							const play = document.getElementById('play');
-							play.disabled = true;
-						}}
-					>
-						Reset
-					</button>
+					<div className="btn-area">
+						<Link
+							to={{
+								pathname: '/play',
+								ships: shipsData,
+								name: name,
+							}}
+						>
+							<div className="btn" id="play" disabled={true}>
+								Play
+							</div>
+						</Link>
+						<div
+							className="btn"
+							onClick={() => {
+								clearBoard();
+								isDrag(false);
+								setShipsData(ml.randShips(gb));
+								displayShips();
+							}}
+						>
+							Randomize
+						</div>
+						<div
+							className="btn"
+							onClick={() => {
+								clearBoard();
+								isDrag(true);
+								const play = document.getElementById('play');
+								play.disabled = true;
+							}}
+						>
+							Reset
+						</div>
+					</div>
 				</div>
 				<div className="ship-container">
 					<div>
 						<h2>Ships:</h2>
-						<button
+						<div
+							className="btn"
 							onClick={() => {
 								setIsHor(!isHor);
 							}}
 						>
 							&#x1F504;
-						</button>
+						</div>
 					</div>
 					<div
 						className="ship-box"
