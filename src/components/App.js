@@ -35,7 +35,7 @@ function App(props) {
 				<ComputerBoard arr={arr} />
 			</div>
 			<Link to="/start">
-				<button>Restart</button>
+				<button className="btn">Restart</button>
 			</Link>
 		</div>
 	);

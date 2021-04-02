@@ -42,9 +42,17 @@ function GameStart() {
 			if (drag) {
 				ps[i].classList.remove('no-drag');
 				ps[i].draggable = true;
+				ps[i].addEventListener('click', () => {
+					let r = document.getElementById('reset');
+					r.classList.remove('reset-highlight');
+				});
 			} else {
 				ps[i].classList.add('no-drag');
 				ps[i].draggable = false;
+				ps[i].addEventListener('click', () => {
+					let r = document.getElementById('reset');
+					r.classList.add('reset-highlight');
+				});
 			}
 		}
 	};
@@ -103,11 +111,11 @@ function GameStart() {
 								name: name,
 							}}
 						>
-							<div className="btn" id="play" disabled={true}>
+							<button className="btn" id="play" disabled={true}>
 								Play
-							</div>
+							</button>
 						</Link>
-						<div
+						<button
 							className="btn"
 							onClick={() => {
 								clearBoard();
@@ -117,9 +125,10 @@ function GameStart() {
 							}}
 						>
 							Randomize
-						</div>
-						<div
+						</button>
+						<button
 							className="btn"
+							id="reset"
 							onClick={() => {
 								clearBoard();
 								isDrag(true);
@@ -128,7 +137,7 @@ function GameStart() {
 							}}
 						>
 							Reset
-						</div>
+						</button>
 					</div>
 				</div>
 				<div className="ship-container">

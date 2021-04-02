@@ -1,7 +1,7 @@
 const ship = require('../ship/ship');
 
 const gameboard = () => {
-	const allShipsPos = [];
+	let allShipsPos = [];
 	const shotsMiss = [];
 	const shotsHit = [];
 	const ships = {};
@@ -46,9 +46,7 @@ const gameboard = () => {
 		return shotsMiss.sort();
 	};
 	const removeAllShips = () => {
-		for (let i = 0; i < allShipsPos.length; i++) {
-			allShipsPos.pop();
-		}
+		allShipsPos = [];
 	};
 	const receiveAttack = (coords) => {
 		if (isDupShot(coords)) return 'duplicate shot';

@@ -198,9 +198,32 @@ table.place-ships {
 	text-align: center;
 	padding: 10px;
 	margin: 20px;
+	background-color: white;
+	font-size: 18px;
+	outline: none;
 }
 .btn:hover {
 	transform: scale(1.2);
 	padding: 9px;
 	border: 2px solid black;
+}
+.reset-highlight {
+	animation: highlight 1.5s;
+}
+@keyframes highlight {
+	0% {
+	}
+	50% {
+		transform: scale(1.2);
+		border: 3px solid red;
+		padding: 8px;
+	}
+	100% {
+	}
+}
+button:disabled:hover,
+button[disabled] {
+	transform: scale(1);
+	border: 1px solid gray;
+	padding: 10px;
 }
