@@ -144,7 +144,7 @@ function GameStart() {
 					<div>
 						<h2>Ships:</h2>
 						<div
-							className="btn"
+							className="rotate"
 							onClick={() => {
 								setIsHor(!isHor);
 							}}

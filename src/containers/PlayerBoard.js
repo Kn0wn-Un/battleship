@@ -1,4 +1,5 @@
 import '../styles/style.css';
+import { Link } from 'react-router-dom';
 function PlayerBoard(props) {
 	return (
 		<div>
@@ -43,6 +44,11 @@ function PlayerBoard(props) {
 					})}
 				</tbody>
 			</table>
+			<div className="btn-area">
+				<Link to="/start">
+					<button className="btn">Restart</button>
+				</Link>
+			</div>
 		</div>
 	);
 }
