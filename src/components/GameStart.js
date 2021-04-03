@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PlacementBoard from '../containers/PlacementBoard';
 import ShipsList from '../containers/ShipsList';
 import mainLoop from './mainLoop';
 import gameboard from '../factories/gameboard/gameboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faSync } from '@fortawesome/free-solid-svg-icons';
 import '../styles/style.css';
 function GameStart() {
 	const ml = mainLoop();
@@ -56,9 +56,6 @@ function GameStart() {
 			}
 		}
 	};
-	useEffect(() => {
-		isDrag(false);
-	}, []);
 	return (
 		<div>
 			{nPtr ? (
@@ -81,7 +78,6 @@ function GameStart() {
 								n[0].classList.add('remove-name-container');
 								setTimeout(() => {
 									setPtr(false);
-									isDrag(true);
 								}, 1000);
 							}}
 						>
@@ -89,9 +85,7 @@ function GameStart() {
 						</span>
 					</div>
 				</div>
-			) : (
-				<div style={{ height: '197px' }}></div>
-			)}
+			) : null}
 			<div className="place-area">
 				<div>
 					<h1>Place Your Ships</h1>
@@ -143,14 +137,13 @@ function GameStart() {
 				<div className="ship-container">
 					<div>
 						<h2>Ships:</h2>
-						<div
+						<FontAwesomeIcon
 							className="rotate"
+							icon={faSync}
 							onClick={() => {
 								setIsHor(!isHor);
 							}}
-						>
-							&#x1F504;
-						</div>
+						/>
 					</div>
 					<div
 						className="ship-box"
