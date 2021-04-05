@@ -10,6 +10,9 @@ function PlacementBoard(props) {
 		ship.style.display = 'block';
 		const id = e.target.id;
 		const coords = { x: Number(id[0]), y: Number(id[1]) };
+		for (let i in sd) {
+			temp.setShip(sd[i]);
+		}
 		if (temp.canPlaceShip([len, coords, props.isHor])) {
 			temp.setShip([len, coords, props.isHor]);
 			props.displayShips();
@@ -20,7 +23,6 @@ function PlacementBoard(props) {
 			if (len === 2) sd['Cruiser'] = [len, coords, props.isHor];
 			if (len === 1) sd['Patrol'] = [len, coords, props.isHor];
 			props.setShipsData(sd);
-			console.log(sd);
 		}
 	};
 	const dragOver = (e) => {
