@@ -75,10 +75,14 @@ function GameStart() {
 								let n = document.getElementsByClassName(
 									'name-container'
 								);
+								const pa = document.querySelector(
+									'.place-area'
+								);
 								n[0].classList.add('remove-name-container');
 								setTimeout(() => {
 									setPtr(false);
 								}, 1000);
+								pa.classList.add('move-up');
 							}}
 						>
 							<FontAwesomeIcon icon={faArrowRight} />
