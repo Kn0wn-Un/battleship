@@ -11,7 +11,7 @@ function GameStart() {
 	const ml = mainLoop();
 	const arr = ml.mkArr();
 	const gb = gameboard();
-	const [name, setName] = useState('Player');
+	const [name, setName] = useState('XX_destr0yer_XX');
 	const [nPtr, setPtr] = useState(true);
 	const [shipsData, setShipsData] = useState({});
 	const [isHor, setIsHor] = useState(true);
