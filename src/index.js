@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import GameStart from './components/GameStart';
+import Footer from './containers/Footer';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -17,6 +18,8 @@ ReactDOM.render(
 			</Route>
 			<Redirect from="/" to="/start" />
 		</Switch>
+
+		<Footer />
 	</Router>,
 	document.getElementById('root')
 );

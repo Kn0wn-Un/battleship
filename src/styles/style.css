@@ -266,3 +266,18 @@ button[disabled] {
 		transform: translate(7px, -160px);
 	}
 }
+.ftr {
+	text-align: center;
+	height: 100px;
+}
+img {
+	height: 25px;
+	position: relative;
+	top: 5px;
+}
+a,
+a:hover,
+a:visited {
+	color: inherit;
+	text-decoration: none;
+}
