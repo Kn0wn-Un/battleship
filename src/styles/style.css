@@ -198,25 +198,24 @@ table.place-ships {
 }
 .btn {
 	display: inline-block;
-	border: 1px solid black;
+	border: 2px solid black;
+	color: black;
 	cursor: pointer;
 	text-align: center;
-	padding: 10px;
+	padding: 9px;
 	margin: 20px;
-	background-color: white;
+	background-color: rgba(255, 80, 80, 0.69);
 	font-size: 18px;
 	outline: none;
 	border-radius: 4%;
-}
-.btn:hover {
-	transform: scale(1.2);
-	padding: 9px;
-	border: 2px solid black;
-	box-shadow: 0px 0px 10px gray;
+	box-shadow: 2px -1px 0px gray;
 }
 .btn:active {
 	box-shadow: 0px 0px 5px black;
-	transform: scale(1.17);
+	transform: scale(0.95);
+}
+.play-btn {
+	background-color: rgba(0, 170, 0, 0.69);
 }
 .reset-highlight {
 	animation: highlight 1.5s;
@@ -236,8 +235,9 @@ button:disabled:hover,
 button[disabled] {
 	transform: scale(1);
 	border: 1px solid gray;
+	color: grey;
 	padding: 10px;
-	box-shadow: 0px 0px 0px gray;
+	box-shadow: 1px -1px 0px gray;
 	cursor: default;
 }
 .rotate {

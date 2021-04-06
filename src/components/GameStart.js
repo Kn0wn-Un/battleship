@@ -129,7 +129,11 @@ function GameStart() {
 								name: name,
 							}}
 						>
-							<button className="btn" id="play" disabled={true}>
+							<button
+								className="btn play-btn"
+								id="play"
+								disabled={true}
+							>
 								Play
 							</button>
 						</Link>
