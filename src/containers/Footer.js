@@ -1,6 +1,5 @@
 import heart from '../styles/images/pixel-heart.png';
 import gh from '../styles/images/MarkLight.png';
-import ghl from '../styles/images/GHWhite.png';
 function Footer() {
 	return (
 		<div className="ftr">

@@ -78,7 +78,7 @@ function GameStart() {
 		<div>
 			{nPtr ? (
 				<div className="name-container">
-					<div className="name"> Enter name: </div>
+					<div className="name"> Enter player name: </div>
 					<div>
 						<input
 							value={name}
