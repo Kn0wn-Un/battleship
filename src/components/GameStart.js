@@ -15,8 +15,16 @@ function GameStart() {
 	const [nPtr, setPtr] = useState(true);
 	const [shipsData, setShipsData] = useState({});
 	const [isHor, setIsHor] = useState(true);
+	const shipTypes = [
+		['Carrier', 5],
+		['Battleship', 4],
+		['Destroyer', 3],
+		['Cruiser', 2],
+		['Patrol', 1],
+	];
 	const displayShips = () => {
 		const ships = gb.getallShips();
+		console.log(ships);
 		for (let i = 0; i < ships.length; i++) {
 			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
 			ele.classList.add('ship');
@@ -28,6 +36,7 @@ function GameStart() {
 	};
 	const clearBoard = () => {
 		gb.removeAllShips();
+		setShipsData({});
 		for (let i = 0; i < 10; i++)
 			for (let j = 0; j < 10; j++) {
 				let ele = document.getElementById(`${i}${j}`);
@@ -157,31 +166,16 @@ function GameStart() {
 								: { flexDirection: 'row' }
 						}
 					>
-						<ShipsList
-							length={5}
-							name={'Carrier'}
-							isHor={isHor}
-						></ShipsList>
-						<ShipsList
-							length={4}
-							name={'Battleship'}
-							isHor={isHor}
-						></ShipsList>
-						<ShipsList
-							length={3}
-							name={'Destroyer'}
-							isHor={isHor}
-						></ShipsList>
-						<ShipsList
-							length={2}
-							name={'Cruiser'}
-							isHor={isHor}
-						></ShipsList>
-						<ShipsList
-							length={1}
-							name={'Patrol'}
-							isHor={isHor}
-						></ShipsList>
+						{shipTypes.map((data, index) => {
+							return (
+								<ShipsList
+									key={index}
+									length={data[1]}
+									name={data[0]}
+									isHor={isHor}
+								></ShipsList>
+							);
+						})}
 					</div>
 				</div>
 			</div>
