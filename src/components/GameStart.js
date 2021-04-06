@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PlacementBoard from '../containers/PlacementBoard';
 import ShipsList from '../containers/ShipsList';
 import mainLoop from './mainLoop';
@@ -22,6 +22,15 @@ function GameStart() {
 		['Cruiser', 2],
 		['Patrol', 1],
 	];
+	useEffect(() => {
+		if (name === 'XX_destr0yer_XX') return;
+		localStorage.setItem('name', name);
+		console.log(localStorage.name);
+	}, [name]);
+	useEffect(() => {
+		if (!localStorage.name) setName('XX_destr0yer_XX');
+		else setName(localStorage.name);
+	}, []);
 	const displayShips = () => {
 		const ships = gb.getallShips();
 		console.log(ships);
