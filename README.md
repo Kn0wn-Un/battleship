@@ -2,6 +2,10 @@
 
 https://pixabay.com/illustrations/pixel-heart-heart-pixel-symbol-red-2779422/
 
+# emoji cursor
+
+https://www.emojicursor.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

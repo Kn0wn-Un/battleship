@@ -19,8 +19,11 @@ table {
 	padding-bottom: 35px;
 }
 td:hover {
-	background-color: cyan;
-	cursor: crosshair;
+	cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚀</text></svg>")
+			16 0,
+		auto; /*!emojicursor.app
+			cursor: crosshair;*/
+	background-color: rgba(0, 255, 255, 0.32);
 }
 .ship {
 	background-color: blue;
@@ -159,10 +162,10 @@ table.place-ships {
 	color: rgb(0, 0, 175);
 }
 .name-input:hover {
-	border-bottom: 3px solid blue;
+	border-bottom: 2px solid blue;
 }
 .name-input:focus-visible {
-	border-bottom: 3px solid blue;
+	border-bottom: 2px solid blue;
 }
 .name-container .but {
 	color: rgba(255, 0, 0, 0.25);

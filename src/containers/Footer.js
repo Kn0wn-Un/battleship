@@ -7,7 +7,11 @@ function Footer() {
 				made with <img src={heart} alt="love"></img>
 			</div>
 			<div>
-				<a href="https://github.com/Kn0wn-Un/battleship">
+				<a
+					href="https://github.com/Kn0wn-Un/battleship"
+					target="_blank"
+					rel="noreferrer"
+				>
 					view source <img src={gh} alt="on github"></img>
 				</a>
 			</div>
