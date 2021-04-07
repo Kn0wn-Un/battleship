@@ -97,12 +97,14 @@ function GameStart() {
 									'.place-area'
 								);
 								const f = document.querySelector('.ftr');
+								const i = document.querySelector('.info');
 								n[0].classList.add('remove-name-container');
 								setTimeout(() => {
 									setPtr(false);
 								}, 1000);
 								pa.classList.add('move-up');
 								f.classList.add('move-up');
+								i.classList.add('move-up');
 							}}
 						>
 							<FontAwesomeIcon icon={faArrowRight} />

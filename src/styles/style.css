@@ -284,3 +284,9 @@ a:visited {
 	color: inherit;
 	text-decoration: none;
 }
+.info {
+	font-size: 30px;
+	position: relative;
+	left: 90vw;
+	top: -85vh;
+}
