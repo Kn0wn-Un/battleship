@@ -5,6 +5,8 @@ import GameStart from './components/GameStart';
 import Footer from './containers/Footer';
 import Rules from './containers/Rules';
 import ReactTooltip from 'react-tooltip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -25,7 +27,9 @@ ReactDOM.render(
 			<Redirect from="/" to="/start" />
 		</Switch>
 		<div className="info" data-tip data-for="registerTip" href="/">
-			<Link to="/rules">&#x24D8;</Link>
+			<Link to="/rules">
+				<FontAwesomeIcon icon={faQuestionCircle} />
+			</Link>
 		</div>
 		<ReactTooltip id="registerTip" place="bottom" effect="solid">
 			How to play?
