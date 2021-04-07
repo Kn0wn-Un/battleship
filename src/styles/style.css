@@ -204,36 +204,29 @@ table.place-ships {
 	text-align: center;
 	padding: 9px;
 	margin: 20px;
-	background-color: rgba(255, 80, 80, 0.69);
+	background-color: rgba(230, 57, 71, 0.85);
 	font-size: 18px;
 	outline: none;
 	border-radius: 4%;
 	box-shadow: 2px -1px 0px gray;
+}
+.btn:hover {
+	background-color: rgb(230, 57, 71);
 }
 .btn:active {
 	box-shadow: 0px 0px 5px black;
 	transform: scale(0.95);
 }
 .play-btn {
-	background-color: rgba(0, 170, 0, 0.69);
+	background-color: rgba(25, 200, 25, 0.85);
 }
-.reset-highlight {
-	animation: highlight 1.5s;
-}
-@keyframes highlight {
-	0% {
-	}
-	50% {
-		transform: scale(1.2);
-		border: 3px solid rgb(164, 22, 26);
-		padding: 8px;
-	}
-	100% {
-	}
+.play-btn:hover {
+	background-color: rgb(25, 200, 25);
 }
 button:disabled:hover,
 button[disabled] {
 	transform: scale(1);
+	background-color: rgba(25, 200, 25, 0.8);
 	border: 1px solid gray;
 	color: grey;
 	padding: 10px;
@@ -266,7 +259,7 @@ button[disabled] {
 }
 @keyframes up {
 	100% {
-		transform: translate(7px, -160px);
+		transform: translate(0px, -160px);
 	}
 }
 .ftr {
@@ -288,5 +281,16 @@ a:visited {
 	font-size: 30px;
 	position: relative;
 	left: 90vw;
-	top: -85vh;
+	top: -75vh;
+	width: max-content;
+}
+.rule {
+	width: 70vw;
+	margin: 0px auto;
+}
+.rule p {
+	padding: 0px 25px;
+}
+.rule h2 {
+	color: #ffbe0b;
 }

@@ -24,11 +24,9 @@ ReactDOM.render(
 			</Route>
 			<Redirect from="/" to="/start" />
 		</Switch>
-		<Link to="/rules">
-			<div className="info" data-tip data-for="registerTip" href="/">
-				&#x24D8;
-			</div>
-		</Link>
+		<div className="info" data-tip data-for="registerTip" href="/">
+			<Link to="/rules">&#x24D8;</Link>
+		</div>
 		<ReactTooltip id="registerTip" place="bottom" effect="solid">
 			How to play?
 		</ReactTooltip>

@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 function Rules() {
 	return (
-		<div>
+		<div className="rule">
 			<h1>Rules for BattleShip</h1>
 			<div>
-				<h2>Game Objective</h2>
+				<h2>Game Objective:</h2>
 				<p>
 					The object of Battleship is to try and sink all of the other
 					player(computer) before they sink all of your ships. All of
@@ -18,7 +19,7 @@ function Rules() {
 				</p>
 			</div>
 			<div>
-				<h2>Starting a New Game</h2>
+				<h2>Starting a New Game:</h2>
 				<p>
 					Each player places the 5 ships somewhere on their board. The
 					ships can only be placed vertically or horizontally.
@@ -31,7 +32,7 @@ function Rules() {
 				</p>
 			</div>
 			<div>
-				<h2>Playing the Game</h2>
+				<h2>Playing the Game:</h2>
 				<p>
 					Player take turn guessing by clicking the coordinates. The
 					game responds with "hit" or "miss" as appropriate. The board
@@ -44,6 +45,10 @@ function Rules() {
 					been sunk, the game ends.
 				</p>
 			</div>
+
+			<Link to="/start">
+				<button className="btn play-btn">Start Game!</button>
+			</Link>
 		</div>
 	);
 }
