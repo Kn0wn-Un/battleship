@@ -17,14 +17,14 @@ import {
 ReactDOM.render(
 	<Router>
 		<Switch>
-			<Route exact path="/play" component={App}></Route>
-			<Route exact path="/start">
+			<Route exact path="/battleship/play" component={App}></Route>
+			<Route exact path="/battleship/start">
 				<GameStart />
 			</Route>
-			<Route exact path="/rules">
+			<Route exact path="/battleship/rules">
 				<Rules />
 			</Route>
-			<Redirect from="/" to="/start" />
+			<Redirect from="/battleship/" to="/battleship/start" />
 		</Switch>
 		<div className="info" data-tip data-for="registerTip" href="/">
 			<Link to="/rules">
