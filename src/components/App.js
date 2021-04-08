@@ -15,10 +15,10 @@ function App(props) {
 	window.onbeforeunload = function () {
 		return 'Progress will be lost!, are you sure?';
 	};
-	// eslint-disable-next-line
 	useEffect(() => {
 		ml.displayShip(ml.Player, ml.Computer);
 		//ml.displayShip(ml.Computer, ml.Player);
+		// eslint-disable-next-line
 	}, []);
 	return (
 		<div>
