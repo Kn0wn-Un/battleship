@@ -27,7 +27,7 @@ ReactDOM.render(
 			<Redirect from="/battleship/" to="/battleship/start" />
 		</Switch>
 		<div className="info" data-tip data-for="registerTip" href="/">
-			<Link to="/rules">
+			<Link to="/battleship/rules">
 				<FontAwesomeIcon icon={faQuestionCircle} />
 			</Link>
 		</div>

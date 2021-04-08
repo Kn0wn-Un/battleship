@@ -45,7 +45,7 @@ function PlayerBoard(props) {
 				</tbody>
 			</table>
 			<div className="btn-area">
-				<Link to="/start">
+				<Link to="/battleship/start">
 					<button className="btn">Restart</button>
 				</Link>
 			</div>

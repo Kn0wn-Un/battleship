@@ -4,7 +4,7 @@ import ComputerBoard from '../containers/ComputerBoard';
 import mainLoop from './mainLoop';
 function App(props) {
 	if (props.location.ships === undefined) {
-		window.location.replace('/start');
+		window.location.replace('/battleship/start');
 	}
 	if (props.location.name === '') {
 		props.location.name = 'A Shy Person';

@@ -97,12 +97,15 @@ function GameStart() {
 								const f = document.querySelector('.ftr');
 								const i = document.querySelector('.info');
 								n[0].classList.add('remove-name-container');
-								setTimeout(() => {
-									setPtr(false);
-								}, 1000);
 								pa.classList.add('move-up');
 								f.classList.add('move-up');
 								i.classList.add('move-up');
+								setTimeout(() => {
+									setPtr(false);
+									pa.classList.remove('move-up');
+									f.classList.remove('move-up');
+									i.classList.remove('move-up');
+								}, 1000);
 							}}
 						>
 							<FontAwesomeIcon icon={faArrowRight} />
@@ -124,7 +127,7 @@ function GameStart() {
 					<div className="btn-area">
 						<Link
 							to={{
-								pathname: '/play',
+								pathname: '/battleship/play',
 								ships: shipsData,
 								name: name,
 							}}

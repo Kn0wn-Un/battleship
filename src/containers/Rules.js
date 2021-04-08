@@ -46,7 +46,7 @@ function Rules() {
 				</p>
 			</div>
 
-			<Link to="/start">
+			<Link to="/battleship/start">
 				<button className="btn play-btn">Start Game!</button>
 			</Link>
 		</div>
