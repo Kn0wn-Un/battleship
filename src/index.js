@@ -24,7 +24,7 @@ ReactDOM.render(
 			<Route exact path="/battleship/rules">
 				<Rules />
 			</Route>
-			<Redirect from="/battleship/" to="/battleship/start" />
+			<Redirect from="/" to="/battleship/start" />
 		</Switch>
 		<div className="info" data-tip data-for="registerTip" href="/">
 			<Link to="/battleship/rules">
