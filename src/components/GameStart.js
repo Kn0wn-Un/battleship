@@ -25,7 +25,6 @@ function GameStart() {
 	useEffect(() => {
 		if (name === 'XX_destr0yer_XX') return;
 		localStorage.setItem('name', name);
-		console.log(localStorage.name);
 	}, [name]);
 	useEffect(() => {
 		if (!localStorage.name) setName('XX_destr0yer_XX');
@@ -33,7 +32,6 @@ function GameStart() {
 	}, []);
 	const displayShips = () => {
 		const ships = gb.getallShips();
-		console.log(ships);
 		for (let i = 0; i < ships.length; i++) {
 			let ele = document.getElementById(`${ships[i][0]}${ships[i][1]}`);
 			ele.classList.add('ship');

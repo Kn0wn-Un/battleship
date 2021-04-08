@@ -23,8 +23,6 @@ function PlacementBoard(props) {
 			if (len === 2) sd['Cruiser'] = [len, coords, props.isHor];
 			if (len === 1) sd['Patrol'] = [len, coords, props.isHor];
 			props.setShipsData(sd);
-			console.log(sd);
-			console.log(temp.getallShips());
 		}
 	};
 	const dragOver = (e) => {

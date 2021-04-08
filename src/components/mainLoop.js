@@ -34,7 +34,6 @@ const mainLoop = (uName) => {
 	};
 	randShips(gb2);
 	const userShips = (s) => {
-		console.log(s);
 		for (let i in s) {
 			gb1.setShip([...s[i]], i);
 		}
@@ -68,7 +67,6 @@ const mainLoop = (uName) => {
 		}
 	};
 	const updateGameBoard = (player) => {
-		console.log(player.getDetails());
 		const shipsHit = player.getDetails().hits;
 		const name = player.getDetails().name;
 		for (let i = 0; i < shipsHit.length; i++) {
@@ -123,7 +121,6 @@ const mainLoop = (uName) => {
 			wait(false);
 			updateGameBoard(Computer);
 		}, 1000);
-		console.log(coord);
 	};
 	return {
 		displayShip,
