@@ -12,6 +12,10 @@ function App(props) {
 	const ml = mainLoop(props.location.name);
 	const arr = ml.mkArr();
 	ml.userShips(props.location.ships);
+	window.onbeforeunload = function (e) {
+		e.preventDefault();
+		e.returnValue = '';
+	};
 	useEffect(() => {
 		ml.displayShip(ml.Player, ml.Computer);
 		//ml.displayShip(ml.Computer, ml.Player);

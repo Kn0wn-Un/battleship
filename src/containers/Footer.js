@@ -4,7 +4,9 @@ function Footer() {
 	return (
 		<div className="ftr">
 			<div>
-				made with <img src={heart} alt="love"></img>
+				made with{' '}
+				<img src={heart} className="heart-beat" alt="love"></img> by
+				Darshan
 			</div>
 			<div>
 				<a
