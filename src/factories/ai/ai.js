@@ -37,16 +37,26 @@ const ai = (comp) => {
 		}
 	};
 	const removeY = (y) => {
-		for (let i = 0; i < nextShots.length; i++) {
-			let c = nextShots[i];
-			if (c.y !== y) nextShots.splice(i, 1);
-		}
+		console.log(y);
+		console.log(nextShots);
+		nextShots = nextShots.filter((v) => v['y'] === y);
+		//for (let i = 0; i < nextShots.length; i++) {
+		//	//let c = nextShots[i];
+		//	//if (c.y !== y) nextShots.splice(i, 1);
+		//	console.log(nextShots[i].y);
+		//}
+		console.log(nextShots);
 	};
 	const removeX = (x) => {
-		for (let i = 0; i < nextShots.length; i++) {
-			let c = nextShots[i];
-			if (c.x !== x) nextShots.splice(i, 1);
-		}
+		console.log(x);
+		console.log(nextShots);
+		nextShots = nextShots.filter((v) => v['x'] === x);
+		//for (let i = 0; i < nextShots.length; i++) {
+		//		//let c = nextShots[i];
+		//		//if (c.x !== x) nextShots.splice(i, 1);
+		//		console.log(nextShots[i].x);
+		//}
+		console.log(nextShots);
 	};
 	const playNextShots = () => {
 		const s = nextShots.pop();
