@@ -6,7 +6,7 @@ Testing Framework: [jest](https://github.com/facebook/jest)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### [Live demo](https://kn0wn-un.github.io/battleship/start/)
+### [Live demo](https://kn0wn-un.github.io/battleship/)
 
 ## Credits
 
